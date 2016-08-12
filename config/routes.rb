@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
     devise_for :usercompanies, controllers: {
       sessions: 'usercompanies/sessions',
-      registrations: 'usercompanies/registrations'
+      registrations: 'usercompanies/registrations',
+      passwords: "usercompanies/passwords"
     }
   end
   # devise_for :users
@@ -24,7 +25,8 @@ Rails.application.routes.draw do
 
     devise_for :users, controllers: {
       sessions: 'users/sessions',
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      passwords: 'users/passwords'
     }
   end
 

@@ -5,6 +5,10 @@ class Users::SessionsController < Devise::SessionsController
     home_user_path
   end
 
+  def after_sign_out_path_for(resource)
+    home_user_path
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
