@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'dotenv-rails'
+gem 'faker'
+
 # gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin', '~> 1.0.0.pre4'
 
