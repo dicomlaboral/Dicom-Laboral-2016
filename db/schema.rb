@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818231822) do
+ActiveRecord::Schema.define(version: 20160818234010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 20160818231822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "templates", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "active"
+    t.integer  "type_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "templates", ["type_id"], name: "index_templates_on_type_id", using: :btree
 
   create_table "types", force: :cascade do |t|
     t.string   "name"
@@ -134,6 +145,7 @@ ActiveRecord::Schema.define(version: 20160818231822) do
   add_index "works", ["company_id"], name: "index_works_on_company_id", using: :btree
   add_index "works", ["user_id"], name: "index_works_on_user_id", using: :btree
 
+  add_foreign_key "templates", "types"
   add_foreign_key "works", "companies"
   add_foreign_key "works", "users"
 end

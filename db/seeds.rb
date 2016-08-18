@@ -11,6 +11,7 @@
 AdminUser.destroy_all
 Company.destroy_all
 Usercompany.destroy_all
+Template.destroy_all
 Type.destroy_all
 
 
@@ -28,5 +29,7 @@ AdminUser.create!(email: 'dicomlaboralcl@gmail.com', password: '123456', passwor
 	u = Usercompany.create!(firstname: Faker::Name.name, company: c, email: Faker::Internet.email , password: "123456")
 end
 
-Type.create!(name: 'PERSONA')
-Type.create!(name: 'EMPRESA')
+t1 = Type.create!(name: 'PERSONA')
+Template.create!(name: 'EVALUACION PERSONA 01', description: 'Este modelo tendra 5 categorias de evaluacion...', active: false, type: t1)
+t2 = Type.create!(name: 'EMPRESA')
+Template.create!(name: 'EVALUACION EMPRESA 01', description: 'Este modelo tendra 7 categorias de evaluacion...', active: false, type: t2)
