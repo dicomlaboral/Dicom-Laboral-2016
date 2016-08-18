@@ -7,31 +7,19 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # devise_for :usercompanies
-  Rails.application.routes.draw do
-  resources :works
-  get 'home/user'
 
-  get 'home/usercompanies'
 
-    devise_for :usercompanies, controllers: {
-      sessions: 'usercompanies/sessions',
-      registrations: 'usercompanies/registrations',
-      passwords: "usercompanies/passwords"
-    }
-  end
-  # devise_for :users
-  Rails.application.routes.draw do
-  resources :works
-  get 'home/user'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
 
-  get 'home/usercompanies'
-
-    devise_for :users, controllers: {
-      sessions: 'users/sessions',
-      registrations: 'users/registrations',
-      passwords: 'users/passwords'
-    }
-  end
+  devise_for :usercompanies, controllers: {
+    sessions: 'usercompanies/sessions',
+    registrations: 'usercompanies/registrations',
+    passwords: "usercompanies/passwords"
+  }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
