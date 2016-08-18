@@ -11,6 +11,7 @@
 AdminUser.destroy_all
 Company.destroy_all
 Usercompany.destroy_all
+Type.destroy_all
 
 
 # Admin User Creation
@@ -26,3 +27,6 @@ AdminUser.create!(email: 'dicomlaboralcl@gmail.com', password: '123456', passwor
 	u = Usercompany.create!(firstname: Faker::Name.name, company: c, email: Faker::Internet.email , password: "123456" )
 	u = Usercompany.create!(firstname: Faker::Name.name, company: c, email: Faker::Internet.email , password: "123456")
 end
+
+Type.create!(name: 'PERSONA')
+Type.create!(name: 'EMPRESA')
