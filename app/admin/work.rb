@@ -1,11 +1,9 @@
-ActiveAdmin.register User do
+ActiveAdmin.register Work do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-
-	permit_params :firstname, :lastname, :rut, :phone, :dni, :birthday
-
+	permit_params :user, :company, :start_date, :end_date, :comment_user, :comment_company
 #
 # or
 #
@@ -14,14 +12,7 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-	index do
-		selectable_column
-	    id_column
-	    column :firstname
-	    column :email
-	    columns :rut
-	    column :created_at
-	    actions
-	end
+
+
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :works
   get 'home/user'
 
   get 'home/usercompanies'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # devise_for :usercompanies
   Rails.application.routes.draw do
+  resources :works
   get 'home/user'
 
   get 'home/usercompanies'
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   end
   # devise_for :users
   Rails.application.routes.draw do
+  resources :works
   get 'home/user'
 
   get 'home/usercompanies'
