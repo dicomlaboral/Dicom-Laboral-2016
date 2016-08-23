@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   post 'companies/create'
 
   resources :works
-  get 'home/user'
 
+  root 'home#index'
+
+  get 'home/user'
   get 'home/usercompanies'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
