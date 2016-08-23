@@ -1,0 +1,9 @@
+<%= form_for @company, url: {action: "create"} do |company| %>
+  Nombre: <%= company.text_field :name %>
+  Rut: <%= company.text_field :rut %>
+  Teléfono: <%= company.text_field :phone %>
+  Dirección: <%= company.text_field :address %>
+  Actividad: <%= company.text_field :activity %>
+
+  <%= company.submit 'Registrar Empresa' %>
+<% end %>
