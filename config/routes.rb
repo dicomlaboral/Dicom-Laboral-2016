@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'companies/register'
+  post 'companies/create'
+
   resources :works
   get 'home/user'
 
