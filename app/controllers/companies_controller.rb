@@ -11,4 +11,8 @@ class CompaniesController < ApplicationController
   def company_params
 	  params.require(:company).permit(:name, :rut, :phone, :address, :activity)
 	end
+
+  def dashboard
+    
+  end
 end

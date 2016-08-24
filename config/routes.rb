@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'companies/register'
+  get 'companies/dashboard'
   post 'companies/create'
 
   resources :works
