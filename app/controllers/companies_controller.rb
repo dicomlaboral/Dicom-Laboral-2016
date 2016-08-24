@@ -1,14 +1,23 @@
 class CompaniesController < ApplicationController
   def register
-  	@company = Company.new
   end
 
   def create
-		@company = Company.new(company_params)
-    @company.save
-  end
+    @company_name = params[:name]
+    @company_rut = params[:rut]
+    @company_phone = params[:phone]
+    @company_address = params[:address]
+    @company_activity = params[:activity]
 
-  def company_params
-	  params.require(:company).permit(:name, :rut, :phone, :address, :activity)
-	end
+    @usercompany_email = params[:email]
+    @usercompany_dni = params[:dni]
+    @usercompany_firstname = params[:firstname]
+    @usercompany_lastname = params[:lastname]
+
+    @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity)
+    @company.save
+
+    @usercompany = Usercompany.new(email: @usercompany_email, dni: @usercompany_dni, firstname: @usercompany_firstname, lastname: @usercompany_lastname, company: @company, password: '123456')
+    @usercompany.save
+  end
 end
