@@ -19,6 +19,6 @@ class CompaniesController < ApplicationController
   end
 
   def dashboard
-
+    @page_section = "dashboard"
   end
 end
