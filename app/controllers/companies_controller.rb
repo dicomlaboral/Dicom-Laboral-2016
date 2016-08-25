@@ -21,4 +21,8 @@ class CompaniesController < ApplicationController
   def dashboard
     @page_section = "dashboard"
   end
+
+  def worker
+
+  end
 end
