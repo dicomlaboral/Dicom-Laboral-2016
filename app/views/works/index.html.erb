@@ -18,8 +18,8 @@
   <tbody>
     <% @works.each do |work| %>
       <tr>
-        <td><%= work.start_date %></td>
-        <td><%= work.end_date %></td>
+        <td><%= l work.start_date %></td> <!--, format: :customformat -->
+        <td><%= l work.end_date %></td>
         <td><%= work.comment_user %></td>
         <td><%= work.comment_company %></td>
         <td><%= work.user %></td>
