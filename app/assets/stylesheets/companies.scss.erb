@@ -1243,7 +1243,14 @@ input[type="text"] {
         display:flex;
         list-style:none;
         margin:0;
-        padding:0
+        padding:0;
+
+        &.not-hover {
+            .c-rating__item:hover {
+                background-position: 0 0 !important;
+                cursor: default !important; 
+            }
+        }
     }
     
     .c-rating__item{
