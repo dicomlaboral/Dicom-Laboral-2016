@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'home/user'
   get 'home/usercompanies'
 
+  post 'users/search'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # devise_for :usercompanies

@@ -1,0 +1,11 @@
+<% if @user.present? %>
+	$("#name").html("<%= @user.firstname ||= '' %>");
+	$("#birthday").html("<%= @user.birthday ||= '' %>");
+	$("#email").html("<%= @user.email ||= '' %>");
+	$("#phone").html("<%= @user.phone ||= '' %>");
+	$("#msjresult").html("");
+	$("#usermarco").css("display", "");
+<% else %>
+	$("#usermarco").css("display", "none");
+	$("#msjresult").html("No results found");
+<% end %>

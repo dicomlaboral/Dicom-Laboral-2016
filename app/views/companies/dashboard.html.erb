@@ -79,20 +79,23 @@
                                 </div>
                                 <div class="custom-panel-body">
                                     
-                                    <div class="input-group">
-                                        <span class="input-group-label"><i class="fi-page-search"></i></span>
-                                        <input class="input-group-field" type="url" placeholder="RUT: 23.590.883-2">
-                                        <a class="input-group-button button">Go!</a>
-                                    </div>
+                                    <form action="<%= users_search_path %>" data-remote="true" method="post">
+                                        <div class="input-group">
+                                            <span class="input-group-label"><i class="fi-page-search"></i></span>
+                                            <input class="input-group-field" type="text" name="rut" placeholder="RUT: 23.590.883-2">
+                                            <!-- <a class="input-group-button button">Go!</a> -->
+                                            <button class="input-group-button button" type="submit">Go!</button>
+                                        </div>
+                                    </form>
 
-                                    <h4 class="text-center">No results found</h4>
+                                    <h4 class="text-center" id="msjresult"></h4>
 
                                 </div>
                             </div>
                         </div>
 
 
-                        <div class="large-4 columns">
+                        <div class="large-4 columns" style="display: none;" id="usermarco">
                             <div class="custom-panel">
                                 <div class="custom-panel-heading">
                                     <h4>Worker Result</h4>
@@ -102,10 +105,10 @@
                                     <div class="worker-avatar" style="background-image: url(<%= asset_path 'worker-avatar.jpg' %>)"></div>
 
                                     <ul class="worker-resume">
-                                        <li><strong>Nombre y Apellido:</strong> Megan Fox</li>
-                                        <li><strong>Fecha de Nacimiento:</strong> 10/12/1984</li>
-                                        <li><strong>Email:</strong> chupaelperro@gmail.com</li>
-                                        <li><strong>Teléfono:</strong> 600 800 9000</li>
+                                        <li><strong>Nombre y Apellido:</strong> <span id="name">Megan Fox</span></li>
+                                        <li><strong>Fecha de Nacimiento:</strong> <span id="birthday">10/12/1984</span></li>
+                                        <li><strong>Email:</strong> <span id="email">chupaelperro@gmail.com</span></li>
+                                        <li><strong>Teléfono:</strong> <span id="phone">600 800 9000</span></li>
                                     </ul>
 
                                     <a href="#" class="button success text-center">Ver Historial</a>
