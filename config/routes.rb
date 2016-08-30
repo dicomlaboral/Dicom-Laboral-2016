@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'companies/register'
   get 'companies/dashboard'
   get 'companies/worker'
+  get 'companies/workers'
   post 'companies/create'
 
   resources :works
