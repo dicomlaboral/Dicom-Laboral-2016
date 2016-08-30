@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'companies/dashboard'
   get 'companies/worker'
   get 'companies/workers'
+  get 'companies/workers_new'
   post 'companies/create'
 
   resources :works

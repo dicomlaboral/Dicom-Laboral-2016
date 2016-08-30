@@ -25,4 +25,12 @@ class CompaniesController < ApplicationController
   def worker
 
   end
+
+  def workers
+
+  end
+
+  def workers_new
+
+  end
 end
