@@ -9,12 +9,12 @@
 
 # Global Destroy Info
 AdminUser.destroy_all
+Work.destroy_all
 Company.destroy_all
 Usercompany.destroy_all
 Category.destroy_all
 Template.destroy_all
 Type.destroy_all
-Work.destroy_all
 
 
 # Admin User Creation
@@ -25,7 +25,7 @@ AdminUser.create!(email: 'dicomlaboralcl@gmail.com', password: '123456', passwor
 5.times do |i|
 	rut = rand.to_s[2..9]
 	rut += "-#{i}"
-	c = Company.create!(name: Faker::Company.name,rut: rut ,phone: "800-600-9000" ,address: Faker::Address.street_address ,activity: Faker::Company.buzzword)
+	c = Company.create!(name: Faker::Company.name,rut: rut ,phone: "800-600-9000" ,address: Faker::Address.street_address ,activity: Faker::Company.buzzword, description: Faker::Company.catch_phrase)
 
 	u = Usercompany.create!(firstname: Faker::Name.name, company: c, email: Faker::Internet.email , password: "123456" )
 	# u = Usercompany.create!(firstname: Faker::Name.name, company: c, email: Faker::Internet.email , password: "123456")

@@ -47,10 +47,14 @@
 
                                 <div class="cd-timeline-content">
                                     <h2><%= work.company.name %></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                    <p><%= work.company.description %></p>
                                     <a class="cd-read-more" data-open="detailWorkRelationship">Ver detalle</a>
 
-                                    <span class="cd-date"><strong>From:</strong> <%= work.start_date %> - <strong>To:</strong> <%= work.end_date %></span>
+                                    <span class="cd-date">
+                                        <strong>From:</strong> <%= work.start_date %> - <strong>To:</strong> <%= work.end_date %>
+                                        <br>
+                                        <strong>Total Time:</strong> <%= distance_of_time_in_words(work.start_date, work.end_date) %>
+                                    </span>
                                 </div> <!-- cd-timeline-content -->
                             </div>
 
