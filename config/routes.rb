@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  get 'companies/register'
-  get 'companies/dashboard'
+  # get 'companies/register'
+  # get 'companies/dashboard'
   get 'companies/worker'
-  get 'companies/workers'
-  get 'companies/workers_new'
-  post 'companies/create'
+  # get 'companies/workers'
+  # get 'companies/workers_new'
+  # post 'companies/create'
+
+  resources :companies, :usercompanies do
+    resources :users, :works
+  end
 
   resources :works
 

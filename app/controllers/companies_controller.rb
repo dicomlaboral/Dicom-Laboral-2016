@@ -18,7 +18,7 @@ class CompaniesController < ApplicationController
     @company.save
   end
 
-  def dashboard
+  def index
     @page_section = "dashboard"
   end
 
