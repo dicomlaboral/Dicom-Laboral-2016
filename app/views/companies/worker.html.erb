@@ -19,13 +19,13 @@
                     </div>
                     <div class="large-10 columns">
                         <div class="page-name">
-                            <h3 class="left">Megan Fox | Worker Profile</h3>
+                            <h3 class="left"><%= @worker.firstname %> <%= @worker.lastname %> | Worker Profile</h3>
                             <div class="clearfix"></div>
                             <ul class="worker-resume">
-                                <li><strong>Nombre y Apellido:</strong> Megan Fox</li>
-                                <li><strong>Fecha de Nacimiento:</strong> 10/12/1984</li>
-                                <li><strong>Email:</strong> chupaelperro@gmail.com</li>
-                                <li><strong>Teléfono:</strong> 600 800 9000</li>
+                                <li><strong>Nombre y Apellido:</strong> <%= @worker.firstname %> <%= @worker.lastname %></li>
+                                <li><strong>Fecha de Nacimiento:</strong> <%= @worker.birthday %></li>
+                                <li><strong>Email:</strong> <a href="mailto:<%= @worker.email %>"><%= @worker.email %></a></li>
+                                <li><strong>Teléfono:</strong> <%= @worker.phone %></li>
                             </ul>
                         </div>
                     </div>
@@ -37,21 +37,27 @@
                         
                         
                         <section id="cd-timeline" class="cd-container">
+                            
+                            <% @works.each do |work| %>
+                            
                             <div class="cd-timeline-block">
                                 <div class="cd-timeline-img good">
                                     <i class="fi-check"></i>
                                 </div> <!-- cd-timeline-img -->
 
                                 <div class="cd-timeline-content">
-                                    <h2>Company Name</h2>
+                                    <h2><%= work.company.name %></h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
                                     <a class="cd-read-more" data-open="detailWorkRelationship">Ver detalle</a>
 
-                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
+                                    <span class="cd-date"><strong>From:</strong> <%= work.start_date %> - <strong>To:</strong> <%= work.end_date %></span>
                                 </div> <!-- cd-timeline-content -->
-                            </div> <!-- cd-timeline-block -->
+                            </div>
 
-                            <div class="cd-timeline-block">
+                            <% end %>
+
+
+                            <div class="cd-timeline-block hide">
                                 <div class="cd-timeline-img bad">
                                     <i class="fi-alert"></i>
                                 </div> <!-- cd-timeline-img -->
@@ -62,10 +68,9 @@
                                     <a href="#0" class="cd-read-more" data-open="detailWorkRelationship">Ver detalle</a>
                                     <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
                                 </div> <!-- cd-timeline-content -->
-                            </div> <!-- cd-timeline-block -->
+                            </div>
 
-
-                            <div class="cd-timeline-block">
+                            <div class="cd-timeline-block hide">
                                 <div class="cd-timeline-img regular">
                                     <i class="fi-minus"></i>
                                 </div> <!-- cd-timeline-img -->
@@ -76,9 +81,9 @@
                                     <a href="#0" class="cd-read-more" data-open="detailWorkRelationship">Ver detalle</a>
                                     <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
                                 </div> <!-- cd-timeline-content -->
-                            </div> <!-- cd-timeline-block -->
+                            </div>
 
-                            <div class="cd-timeline-block">
+                            <div class="cd-timeline-block hide">
                                 <div class="cd-timeline-img regular">
                                     <i class="fi-minus"></i>
                                 </div> <!-- cd-timeline-img -->
@@ -89,9 +94,9 @@
                                     <a href="#0" class="cd-read-more" data-open="detailWorkRelationship">Ver detalle</a>
                                     <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
                                 </div> <!-- cd-timeline-content -->
-                            </div> <!-- cd-timeline-block -->
+                            </div>
 
-                            <div class="cd-timeline-block">
+                            <div class="cd-timeline-block hide">
                                 <div class="cd-timeline-img bad">
                                     <i class="fi-alert"></i>
                                 </div> <!-- cd-timeline-img -->
@@ -101,7 +106,7 @@
                                     <p>This is the content of the last section</p>
                                     <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
                                 </div> <!-- cd-timeline-content -->
-                            </div> <!-- cd-timeline-block -->
+                            </div>
 
                         </section> <!-- cd-timeline -->
 

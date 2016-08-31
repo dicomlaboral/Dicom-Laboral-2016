@@ -23,7 +23,8 @@ class CompaniesController < ApplicationController
   end
 
   def worker
-
+    @worker = User.find(params[:id])
+    @works = @worker.works
   end
 
   def workers

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'companies/register'
   # get 'companies/dashboard'
-  get 'companies/worker'
+  get 'companies/worker/:id' => 'companies#worker'
   # get 'companies/workers'
   # get 'companies/workers_new'
   # post 'companies/create'
