@@ -5,7 +5,7 @@
 	$("#phone").html("<%= @user.phone ||= '' %>");
 	$("#msjresult").html("");
 	$("#usermarco").css("display", "");
-	$("#detail_link").attr('href', '<%= companies_worker_path %>/<%=@user.id %>');
+	$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
 <% else %>
 	$("#usermarco").css("display", "none");
 	$("#msjresult").html("No results found");
