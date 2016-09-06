@@ -1,7 +1,7 @@
 class CreateWorks < ActiveRecord::Migration
   def change
     create_table :works do |t|
-      t.date :start_date
+      t.date :star_date
       t.date :end_date
       t.text :comment_user
       t.text :comment_company
