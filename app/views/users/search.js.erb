@@ -5,7 +5,16 @@
 	$("#phone").html("<%= @user.phone ||= '' %>");
 	$("#msjresult").html("");
 	$("#usermarco").css("display", "");
-	$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
+	<% if @user.company_id? %>
+		$("#detail_link").css("display", "");
+		$("#create_work_link").css("display", "none");
+		$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
+	<% else %>
+		alert('sin relacion laboral')
+		$("#detail_link").css("display", "none");
+		$("#create_work_link").css("display", "");
+		$("#create_work_link").attr('href', '<%= companies_workers_new_path %>/<%=@user.id %>');
+	<% end %>
 <% else %>
 	$("#usermarco").css("display", "none");
 	$("#msjresult").html("No results found");
