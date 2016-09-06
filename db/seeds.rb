@@ -20,6 +20,13 @@ Type.destroy_all
 # Admin User Creation
 AdminUser.create!(email: 'dicomlaboralcl@gmail.com', password: '123456', password_confirmation: '123456')
 
+# Worker User Creation
+10.times do |i|
+	rut = rand.to_s[2..9]
+	rut += "-#{i}"
+	User.create!(email: Faker::Internet.email, firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, password: '123456', password_confirmation: '123456', dni: rut )
+end
+
 # Companies Seed Creation
 
 5.times do |i|
