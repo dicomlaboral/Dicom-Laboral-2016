@@ -71,6 +71,33 @@ ActiveRecord::Schema.define(version: 20160906230319) do
     t.text     "description"
   end
 
+  create_table "people", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "phone"
+    t.string   "dni"
+    t.date     "birthday"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+  end
+
+  add_index "people", ["confirmation_token"], name: "index_people_on_confirmation_token", unique: true, using: :btree
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
+
   create_table "templates", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -144,7 +171,7 @@ ActiveRecord::Schema.define(version: 20160906230319) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "works", force: :cascade do |t|
-    t.date     "start_date"
+    t.date     "star_date"
     t.date     "end_date"
     t.text     "comment_user"
     t.text     "comment_company"
@@ -152,7 +179,6 @@ ActiveRecord::Schema.define(version: 20160906230319) do
     t.integer  "company_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "from"
   end
 
   add_index "works", ["company_id"], name: "index_works_on_company_id", using: :btree
