@@ -34,4 +34,10 @@ class CompaniesController < ApplicationController
   def workers_new
 
   end
+
+  def work_data
+    @work = Work.find(params[:id])
+    render json: @work.as_json(include: :company)
+  end
+
 end
