@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :works
   # get 'companies/register'
   # get 'companies/dashboard'
   get 'companies/workers/:id' => 'companies#worker'
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
     resources :users, :works
   end
 
-  resources :works
 
   root 'home#index'
 
