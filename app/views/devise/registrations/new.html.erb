@@ -29,6 +29,12 @@
         </div>
 
         <div class="small-12 columns">
+          <%= f.file_field :photo %>
+          <%= f.hidden_field :photo_cache %>
+          <%= image_tag(@user.photo) if @user.photo? %>
+        </div>
+
+        <div class="small-12 columns">
           <%= f.submit "Sign up", class: "hollow button" %>
         </div>
       <% end %>

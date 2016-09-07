@@ -3,6 +3,11 @@
 	$("#birthday").html("<%= @user.birthday ||= '' %>");
 	$("#email").html("<%= @user.email ||= '' %>");
 	$("#phone").html("<%= @user.phone ||= '' %>");
+
+	<% if @user.photo? %>
+		$("#worker_avatar").css("backgroundImage", "url('<%= @user.photo %>')");
+	<% end %>
+
 	$("#msjresult").html("");
 	$("#usermarco").css("display", "");
 	<% if @user.company_id? %>

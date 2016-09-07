@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
    	has_many :works
    	has_many :companies, through: :works
+   	mount_uploader :photo, PhotoUploader
 end
