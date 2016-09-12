@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def user
   end
 
-  def usercompanies
+  def register_usercompanies
   end
 
   def create_user_companies

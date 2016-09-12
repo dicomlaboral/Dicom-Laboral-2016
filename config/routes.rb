@@ -1,28 +1,22 @@
 Rails.application.routes.draw do
   resources :works
 
+  get 'companies/' => 'companies#index'
   get 'companies/workers/:id' => 'companies#worker'
   get 'companies/workers'
   get 'companies/workers_new'
   get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
 
-  resources :companies, :usercompanies do
-    resources :users, :works
-  end
+  # resources :companies, :usercompanies do
+  #   resources :users, :works
+  # end
 
 
-  root 'home#index'
-
-  get 'home/user'
-  get 'home/usercompanies'
-  post 'home/create_user_companies'
-
-  post 'users/search'
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  # devise_for :usercompanies
-
+  root  'home#index'
+  get   'home/user'
+  get   'home/register_usercompanies'
+  post  'home/create_user_companies'
+  post  'users/search'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -35,6 +29,9 @@ Rails.application.routes.draw do
     registrations: 'usercompanies/registrations',
     passwords: "usercompanies/passwords"
   }
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
