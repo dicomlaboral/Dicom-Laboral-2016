@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   resources :works
-  # get 'companies/register'
-  # get 'companies/dashboard'
+
   get 'companies/workers/:id' => 'companies#worker'
   get 'companies/workers'
   get 'companies/workers_new'
   get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
-  # post 'companies/create'
 
   resources :companies, :usercompanies do
     resources :users, :works
@@ -17,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'home/user'
   get 'home/usercompanies'
+  post 'home/create_user_companies'
 
   post 'users/search'
 
