@@ -24,17 +24,25 @@ class WorksController < ApplicationController
   # POST /works
   # POST /works.json
   def create
-    @work = Work.new(work_params)
-
-    respond_to do |format|
-      if @work.save
-        format.html { redirect_to @work, notice: 'Work was successfully created.' }
-        format.json { render :show, status: :created, location: @work }
-      else
-        format.html { render :new }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
-      end
-    end
+    @work = Work.new #(work_params2)
+    @work.user_id = params[:id]
+    @work.from = params[:from]
+    @work.comment_company = params[:comments]
+    @work.start_date = params[:startdate]
+    @work.end_date = params[:enddate]
+    @work.company_id = 9
+    @work.save
+    redirect_to companies_path
+    # @from = 'EMPRESA'
+    # respond_to do |format|
+    #   if @work.save
+    #     format.html { redirect_to @work, notice: 'Work was successfully created.' }
+    #     format.json { render :show, status: :created, location: @work }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @work.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /works/1
@@ -69,6 +77,10 @@ class WorksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_params
-      params.require(:work).permit(:star_date, :end_date, :comment_user, :comment_company, :user_id, :company_id)
+      params.require(:work).permit(:start_date, :end_date, :comment_user, :comment_company, :user_id, :company_id, :from)
+    end
+
+    def work_params2
+      params.require(:work).permit(:startdate, :enddate, :comments, :id, :from)
     end
 end

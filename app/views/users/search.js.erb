@@ -1,6 +1,10 @@
 <% if @user.present? %>
 	$("#name").html("<%= @user.firstname ||= '' %>");
-	$("#birthday").html("<%= @user.birthday ||= '' %>");
+	<% if @user.birthday? %>
+		$("#birthday").html("<%= l @user.birthday %>");
+	<% else %>
+		$("#birthday").html("<%= '' %>");
+	<% end %>
 	$("#email").html("<%= @user.email ||= '' %>");
 	$("#phone").html("<%= @user.phone ||= '' %>");
 
@@ -10,7 +14,7 @@
 
 	$("#msjresult").html("");
 	$("#usermarco").css("display", "");
-	<% if @user.company_id? %>
+	<% if @work.present? %>
 		$("#detail_link").css("display", "");
 		$("#create_work_link").css("display", "none");
 		$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
@@ -18,7 +22,7 @@
 		alert('sin relacion laboral')
 		$("#detail_link").css("display", "none");
 		$("#create_work_link").css("display", "");
-		$("#create_work_link").attr('href', '<%= companies_workers_new_path %>/<%=@user.id %>');
+		$("#create_work_link").attr('href', '<%= workers_new_path(@user.id) %>');
 	<% end %>
 <% else %>
 	$("#usermarco").css("display", "none");

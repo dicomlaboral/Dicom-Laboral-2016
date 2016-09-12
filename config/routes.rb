@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'companies/dashboard'
   get 'companies/workers/:id' => 'companies#worker'
   get 'companies/workers'
-  get 'companies/workers_new'
+  get 'companies/workers_new/:id' => 'companies#addworker', as: :workers_new
   get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
   # post 'companies/create'
 

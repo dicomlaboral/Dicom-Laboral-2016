@@ -31,8 +31,13 @@ class CompaniesController < ApplicationController
 
   end
 
-  def workers_new
+  # def workers_new
+  # end
 
+  def addworker
+    @company = Company.find(6)
+    @user = User.find(params[:id])
+    @from = 'EMPRESA'
   end
 
   def work_data
