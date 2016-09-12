@@ -42,7 +42,10 @@
 		<h2>Are you a Company?</h2>
 		<p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.</p>
 
-		<a class="secondary button" href="#">Sign Up</a>
+		<a class="secondary button" href="<%= home_register_usercompanies_path %>">Sign Up</a>
+
+		<a class="success button" href="<%= new_usercompany_session_path %>">Sign In</a>
+
 	</div>
 
 	<div class="small-12 medium-6 columns text-center">
@@ -51,6 +54,8 @@
 		<p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.</p>
 
 		<a class="button" href="<%= new_user_registration_path %>">Sign Up</a>
+		<a class="button success" href="<%= new_user_session_path %>">Sign In</a>
+
 	</div>
 
 </div>
@@ -104,19 +109,4 @@
 </div>
 <!-- //Best Workers -->
 
-
-<hr>
-
-
-<!-- FOOTER -->
-<footer>
-	<div class="row column">
-		<ul class="menu">
-			<li><a href="#">One</a></li>
-			<li><a href="#">Two</a></li>
-			<li><a href="#">Three</a></li>
-			<li><a href="#">Four</a></li>
-		</ul>
-	</div>
-</footer>
-<!-- //FOOTER -->
+<%= render "partials/footer" %>

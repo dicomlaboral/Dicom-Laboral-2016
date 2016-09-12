@@ -1,5 +1,10 @@
+<%= render "partials/nav_bar" %>
+
+<div class="row">
+	<div class="small-12 columns">
+
 <h2>Registro de Empresa</h2>
-<%= form_tag companies_create_path do %>
+<%= form_tag home_create_user_companies_path do %>
 	<%= field_set_tag 'Datos de la Empresa' do %>
 		<%= label_tag 'name', 'Nombre' %>
 		<%= text_field_tag "name", nil, placeholder: 'Ingrese nombre' %>
@@ -22,5 +27,10 @@
 		<%= label_tag 'lastname', 'Apellido' %>
 		<%= text_field_tag "lastname", nil, placeholder: 'Ingrese su apellido' %>
 	<% end %>
-	<%= submit_tag "Registrar Empresa", data: { confirm: "Esta seguro de enviar los datos?", disable_with: "Espere por favor..." } %>
+	<%= submit_tag "Registrar Empresa", class: "button", data: { confirm: "Esta seguro de enviar los datos?", disable_with: "Espere por favor..." } %>
 <% end %>
+
+	</div>
+</div>
+
+<%= render "partials/footer" %>
