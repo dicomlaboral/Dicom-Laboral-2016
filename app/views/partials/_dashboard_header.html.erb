@@ -30,7 +30,7 @@
                             <img src="<%= asset_path 'user-avatar.gif' %>" alt="picture" class="top-bar-picture" />
                         </div>
                         <div class="medium-3 small-3 columns">
-                            <a href="#" class="log-out">
+                            <a href="<%= destroy_usercompany_session_path %>" data-method="delete" class="log-out">
                                 <i class="fi-power power-off"></i>
                             </a>
                         </div>
