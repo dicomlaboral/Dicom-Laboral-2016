@@ -16,6 +16,10 @@
 		<%= text_field_tag "address", nil, placeholder: 'Ingrese dirección' %>
 		<%= label_tag 'activity', 'Actividad' %>
 		<%= text_field_tag "activity", nil, placeholder: 'Ingrese actividad' %>
+
+		<%= label_tag 'description', 'Descripción' %>
+		<%= text_area_tag "description", nil, placeholder: 'Ingrese una descripción de su empresa' %>
+
 	<% end %>
 	<%= field_set_tag 'Datos del Usuario' do %>
 		<%= label_tag 'email', 'Email' %>
