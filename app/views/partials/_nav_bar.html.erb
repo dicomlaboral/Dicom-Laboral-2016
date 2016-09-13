@@ -17,3 +17,9 @@
 	</div>-->
 </div>
 <!-- //Top Bar -->
+
+<% if flash[:notice] %>
+<div class="callout alert">
+    <h4><%= flash[:notice] %></h4>
+</div>
+<% end %>
