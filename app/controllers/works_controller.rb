@@ -30,7 +30,7 @@ class WorksController < ApplicationController
     @work.comment_company = params[:comments]
     @work.start_date = params[:startdate]
     @work.end_date = params[:enddate]
-    @work.company_id = 9
+    @work.company_id = current_usercompany.company_id
     @work.save
     redirect_to companies_path
     # @from = 'EMPRESA'

@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
   # end
 
   def addworker
-    @company = Company.find(6)
+    @company = Company.find(current_usercompany.company_id)
     @user = User.find(params[:id])
     @from = 'EMPRESA'
   end
