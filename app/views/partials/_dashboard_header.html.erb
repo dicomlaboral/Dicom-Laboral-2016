@@ -11,6 +11,8 @@
             <div class="row">
                 
                 <div class="large-4 medium-6 small-12 columns text-center float-right">
+
+                    <% if usercompany_signed_in? %>
                     <div class="row">
                         <div class="medium-3 small-3 columns">
                             <div class="notification">
@@ -33,6 +35,8 @@
                             </a>
                         </div>
                     </div>
+
+                    <% end %>
                 </div>
             </div>
             <div class="clearfix"></div>

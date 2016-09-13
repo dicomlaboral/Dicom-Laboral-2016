@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_usercompany!
+
   def register
   end
 
