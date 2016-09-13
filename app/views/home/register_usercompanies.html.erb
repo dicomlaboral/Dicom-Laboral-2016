@@ -4,7 +4,7 @@
 	<div class="small-12 columns">
 
 <h2>Registro de Empresa</h2>
-<%= form_tag home_create_user_companies_path do %>
+<%= form_tag home_create_user_companies_path, multipart: true do %>
 	<%= field_set_tag 'Datos de la Empresa' do %>
 		<%= label_tag 'name', 'Nombre' %>
 		<%= text_field_tag "name", nil, placeholder: 'Ingrese nombre' %>
@@ -30,6 +30,10 @@
 		<%= text_field_tag "firstname", nil, placeholder: 'Ingrese su nombre' %>
 		<%= label_tag 'lastname', 'Apellido' %>
 		<%= text_field_tag "lastname", nil, placeholder: 'Ingrese su apellido' %>
+		
+		<%= label_tag 'photo', 'Foto:' %>
+        <%= file_field_tag :photo %>
+
 	<% end %>
 	<%= submit_tag "Registrar Empresa", class: "button", data: { confirm: "Esta seguro de enviar los datos?", disable_with: "Espere por favor..." } %>
 <% end %>

@@ -21,13 +21,14 @@ class HomeController < ApplicationController
     @usercompany_dni = params[:dni]
     @usercompany_firstname = params[:firstname]
     @usercompany_lastname = params[:lastname]
+    @usercompany_photo = params[:photo]
 
     @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity)
     @company.save
 
     @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity, description: @company_description)
 
-    @usercompany = Usercompany.new(firstname: @usercompany_firstname, lastname: @usercompany_lastname, company: @company, email: @usercompany_email , password: "123456" )
+    @usercompany = Usercompany.new(firstname: @usercompany_firstname, lastname: @usercompany_lastname, photo: @usercompany_photo, company: @company, email: @usercompany_email , password: "123456" )
 
     if @company.save and @usercompany.save
       redirect_to root_path
