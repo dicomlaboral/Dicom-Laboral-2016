@@ -42,9 +42,9 @@
 		<h2>Are you a Company?</h2>
 		<p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.</p>
 
-		<a class="secondary button" href="<%= home_register_usercompanies_path %>">Sign Up</a>
+		<a class="button" data-open="company_signup">Sign Up</a>
 
-		<a class="success button" href="<%= new_usercompany_session_path %>">Sign In</a>
+		<a class="button success" data-open="company_signin">Sign In</a>
 
 	</div>
 
@@ -53,8 +53,8 @@
 		<h2>Are you a Worker?</h2>
 		<p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.</p>
 
-		<a class="button" href="<%= new_user_registration_path %>">Sign Up</a>
-		<a class="button success" href="<%= new_user_session_path %>">Sign In</a>
+		<a class="button" data-open="worker_signup">Sign Up</a>
+		<a class="button success" data-open="worker_signin">Sign In</a>
 
 	</div>
 
@@ -108,5 +108,53 @@
 	</div>
 </div>
 <!-- //Best Workers -->
+
+
+<!-- COMPANY Sign Up -->
+<div class="reveal" id="company_signup" data-reveal>
+  
+  <%= render "partials/company_signup" %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- COMPANY Sign Up -->
+
+<!-- COMPANY Sign In -->
+<div class="reveal" id="company_signin" data-reveal>
+  
+  <%= render "partials/company_signin" %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- COMPANY Sign In -->
+
+
+<!-- WORKER Sign Up -->
+<div class="reveal" id="worker_signup" data-reveal>
+  
+  <%= render "partials/worker_signup" %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- WORKER Sign Up -->
+
+
+<!-- WORKER Sign In -->
+<div class="reveal" id="worker_signin" data-reveal>
+  
+  <%= render "partials/worker_signin" %>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- WORKER Sign In -->
+
 
 <%= render "partials/footer" %>

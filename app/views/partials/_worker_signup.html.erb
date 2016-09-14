@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="small-12 columns">
+
+    <h2>Worker SignUp</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <div class="row">
+
+        <div class="small-12 columns">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="small-12 columns">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="small-12 columns">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="small-12 columns">
+          <%= f.label :photo, "Foto:" %><br />
+          <%= f.file_field :photo %>
+        </div>
+
+        <div class="small-12 columns">
+          <%= f.submit "Sign up", class: "button" %>
+        </div>
+      <% end %>
+        
+    </div>
+
+  </div>
+</div>

@@ -1,8 +1,0 @@
-<h1>HOME USERS</h1>
-<% if user_signed_in? %>
-	Usted esta logeado como: <%= current_user.email %> |
-  <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Ingresar", new_user_session_path %> | 
-  <%= link_to "Registrarse", new_user_registration_path %>
-<% end %>
