@@ -69,17 +69,17 @@
 
                     <br />
                     
-                    <!-- SEARCH WORKER -->
+                    <!-- SEARCH COMPANY -->
                     <div class="row">
 
                         <div class="large-8 columns">
                             <div class="custom-panel">
                                 <div class="custom-panel-heading">
-                                    <h4>Search new Worker</h4>
+                                    <h4>Search new Company</h4>
                                 </div>
                                 <div class="custom-panel-body">
                                     
-                                    <form action="<%= companies_search_path %>" data-remote="true" method="post">
+                                    <form action="<%= users_search_path %>" data-remote="true" method="post">
                                         <div class="row collapse">
                                             <div class="small-12 medium-1 columns">
                                                 <span class="input-group-label" style="height: 39px; border: 1px solid #cacaca;"><i class="fi-page-search"></i></span>
@@ -103,16 +103,16 @@
                         <div class="large-4 columns" style="display: none;" id="usermarco">
                             <div class="custom-panel">
                                 <div class="custom-panel-heading">
-                                    <h4>Worker Result</h4>
+                                    <h4>Company Result</h4>
                                 </div>
                                 <div class="custom-panel-body">
                                     
                                     <div class="worker-avatar" id="worker_avatar"></div>
 
                                     <ul class="worker-resume">
-                                        <li><strong>Nombre y Apellido:</strong> <span id="name">Megan Fox</span></li>
-                                        <li><strong>Fecha de Nacimiento:</strong> <span id="birthday">10/12/1984</span></li>
-                                        <li><strong>Email:</strong> <span id="email">chupaelperro@gmail.com</span></li>
+                                        <li><strong>Nombre:</strong> <span id="name">Megan Fox</span></li>
+                                        <li><strong>Dirección:</strong> <span id="address">10/12/1984</span></li>
+                                        <li><strong>Actividad:</strong> <span id="activity">chupaelperro@gmail.com</span></li>
                                         <li><strong>Teléfono:</strong> <span id="phone">600 800 9000</span></li>
                                     </ul>
 

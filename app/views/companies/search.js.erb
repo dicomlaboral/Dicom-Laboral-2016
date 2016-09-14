@@ -1,15 +1,23 @@
-<% if @company.present? %>
-	$("#name").html("<%= @company.name ||= '' %>");
-	$("#address").html("<%= @company.address %>");
-	$("#activity").html("<%= @company.activity ||= '' %>");
-	$("#phone").html("<%= @company.phone ||= '' %>");
+<% if @user.present? %>
+	$("#name").html("<%= @user.firstname ||= '' %>");
+	<% if @user.birthday? %>
+		$("#birthday").html("<%= l @user.birthday %>");
+	<% else %>
+		$("#birthday").html("<%= '' %>");
+	<% end %>
+	$("#email").html("<%= @user.email ||= '' %>");
+	$("#phone").html("<%= @user.phone ||= '' %>");
+
+	<% if @user.photo? %>
+		$("#worker_avatar").css("backgroundImage", "url('<%= @user.photo %>')");
+	<% end %>
 
 	$("#msjresult").html("");
 	$("#usermarco").css("display", "");
 	<% if @work.present? %>
 		$("#detail_link").css("display", "");
 		$("#create_work_link").css("display", "none");
-		$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@company.id %>');
+		$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
 	<% else %>
 		alert('sin relacion laboral')
 		$("#detail_link").css("display", "none");
