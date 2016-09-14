@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
 
   root  'home#index'
-  get   'home/user'
   post  'home/create_user_companies'
   post  'users/search'
 
