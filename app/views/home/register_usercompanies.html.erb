@@ -20,6 +20,9 @@
 		<%= label_tag 'description', 'Descripción' %>
 		<%= text_area_tag "description", nil, placeholder: 'Ingrese una descripción de su empresa' %>
 
+		<%= label_tag 'logo', 'Logo:' %>
+        <%= file_field_tag :logo %>
+
 	<% end %>
 	<%= field_set_tag 'Datos del Usuario' do %>
 		<%= label_tag 'email', 'Email' %>

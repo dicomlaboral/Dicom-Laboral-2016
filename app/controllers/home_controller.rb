@@ -16,6 +16,7 @@ class HomeController < ApplicationController
     @company_address = params[:address]
     @company_activity = params[:activity]
     @company_description = params[:description]
+    @company_logo = params[:logo]
 
     @usercompany_email = params[:email]
     @usercompany_dni = params[:dni]
@@ -26,7 +27,7 @@ class HomeController < ApplicationController
     @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity)
     @company.save
 
-    @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity, description: @company_description)
+    @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity, description: @company_description, logo: @company_logo)
 
     @usercompany = Usercompany.new(firstname: @usercompany_firstname, lastname: @usercompany_lastname, photo: @usercompany_photo, company: @company, email: @usercompany_email , password: "123456" )
 
