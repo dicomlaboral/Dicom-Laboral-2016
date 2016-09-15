@@ -1,9 +1,9 @@
 <div class="row">
   <div class="small-12 columns">
 
-    <h2>Log in <%= current_user %></h2>
+    <h2>Log in</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource_company, as: resource_name_company, url: session_path(resource_name_company)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true %>
