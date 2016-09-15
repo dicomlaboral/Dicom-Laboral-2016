@@ -1,7 +1,15 @@
+
+<% if usercompany_signed_in? %>
+
 <ul class="side-nav">
-    <li class="active"><a href="index.html"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
-    <li><a href="profile.html"><i class="flaticon-profile4"></i>Workers</a></li>
-    <li><a href="staff.html"><i class="flaticon-businessman22"></i>Staff</a></li>
-    <li><a href="#panel1c"><i class="flaticon-forms"></i>Components</a></li>
-    <li><a href="pricing.html"><i class="flaticon-businessman63"></i>Pricing</a></li>
+    <li class="active"><a href="<%= companies_path %>"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
+    <li><a href="<%= companies_workers_path %>"><i class="flaticon-profile4"></i>Workers</a></li>
+    <li><a href="#"><i class="flaticon-businessman22"></i>Staff</a></li>
 </ul>
+
+<% end %>
+
+<% if user_signed_in? %>
+
+
+<% end %>
