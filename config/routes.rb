@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
 
   get 'users/' => 'users#index'
+  get 'users/workers_new/:id' => 'users#addworker', as: :workers_new2
+  get 'users/workers/:id' => 'users#worker'
+  get 'users/workers'
   post  'companies/search'
 
   # resources :companies, :usercompanies do

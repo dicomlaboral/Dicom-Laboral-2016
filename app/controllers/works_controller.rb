@@ -24,15 +24,27 @@ class WorksController < ApplicationController
   # POST /works
   # POST /works.json
   def create
-    @work = Work.new #(work_params2)
-    @work.user_id = params[:id]
-    @work.from = params[:from]
-    @work.comment_company = params[:comments]
-    @work.start_date = params[:startdate]
-    @work.end_date = params[:enddate]
-    @work.company_id = current_usercompany.company_id
-    @work.save
-    redirect_to companies_path
+    if params[:from] == 'EMPRESA'
+      @work = Work.new #(work_params2)
+      @work.user_id = params[:id]
+      @work.from = params[:from]
+      @work.comment_company = params[:comments]
+      @work.start_date = params[:startdate]
+      @work.end_date = params[:enddate]
+      @work.company_id = current_usercompany.company_id
+      @work.save
+      redirect_to companies_path
+    else
+      @work = Work.new #(work_params2)
+      @work.user_id = current_user.id
+      @work.from = params[:from]
+      @work.comment_user = params[:comments]
+      @work.start_date = params[:startdate]
+      @work.end_date = params[:enddate]
+      @work.company_id = params[:id]
+      @work.save
+      redirect_to users_path
+    end
     # @from = 'EMPRESA'
     # respond_to do |format|
     #   if @work.save

@@ -3,7 +3,9 @@
     <div class="row expanded collapse">
         <div class="large-2 medium-4 small-12 columns top-part-no-padding">
             <div class="logo-bg">
-                <img src="<%= current_usercompany.company.logo %>" alt="logo"/>
+                <% if usercompany_signed_in? %>
+                    <img src="<%= current_usercompany.company.logo %>" alt="logo"/>
+                <% end %>
                 <i class="fi-list toggles" data-toggle="hide"></i>
             </div>
         </div>
