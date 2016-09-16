@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'companies/' => 'companies#index'
   get 'companies/workers/:id' => 'companies#worker'
+  get 'companies/workers/:id/rating' => 'companies#workerrating'
+  post 'companies/workers/:id/addrating' => 'companies#addworkerrating'
   get 'companies/workers'
   get 'companies/workers_new/:id' => 'companies#addworker', as: :workers_new
   get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
@@ -17,6 +19,11 @@ Rails.application.routes.draw do
   #   resources :users, :works
   # end
 
+  # resources :type, only: [] do
+  #   resources :templates, only: [] do
+  #       resources :categories, only: [:index]
+  #   end
+  # end
 
   root  'home#index'
   post  'home/create_user_companies'
