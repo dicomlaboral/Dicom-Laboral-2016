@@ -45,9 +45,10 @@
                                 </div>
                                 <div class="custom-panel-body">
                                     <table class="width-100 custom-table responsive text-left workers-list">
+                                        <% @works.each do |work| %>
                                         <tr>
-                                            <td width="25%"><a href="#">Gustavo Elizalde Ibañez</a></td>
-                                            <td width="25%">23.590.883-2</td>
+                                            <td width="25%"><a href="#"><%= "#{work.firstname} #{work.lastname}" %></a></td>
+                                            <td width="25%"><%= work.dni %></td>
                                             <td width="25%">
                                             	<div class="rating-box">
                                             	    <ul class="c-rating not-hover">
@@ -55,64 +56,13 @@
                                             	        <li class="c-rating__item is-active" data-index="1"></li>
                                             	        <li class="c-rating__item is-active" data-index="2"></li>
                                             	        <li class="c-rating__item is-active" data-index="3"></li>
-                                            	        <li class="c-rating__item" data-index="4"></li>
+                                            	        <li class="c-rating__item" data-index="4"><%= work.promedio.round %></li>
                                             	    </ul>
                                             	</div>
                                             </td>
                                             <td width="25%"><label class="alert label">Closed</label></td>
                                         </tr>
-
-                                        <tr>
-                                            <td width="25%"><a href="#">Gustavo Elizalde Ibañez</a></td>
-                                            <td width="25%">23.590.883-2</td>
-                                            <td width="25%">
-                                            	<div class="rating-box">
-                                            	    <ul class="c-rating not-hover">
-                                            	        <li class="c-rating__item is-active" data-index="0"></li>
-                                            	        <li class="c-rating__item is-active" data-index="1"></li>
-                                            	        <li class="c-rating__item is-active" data-index="2"></li>
-                                            	        <li class="c-rating__item is-active" data-index="3"></li>
-                                            	        <li class="c-rating__item" data-index="4"></li>
-                                            	    </ul>
-                                            	</div>
-                                            </td>
-                                            <td width="25%"><label class="success label">Opened</label></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td width="25%"><a href="#">Gustavo Elizalde Ibañez</a></td>
-                                            <td width="25%">23.590.883-2</td>
-                                            <td width="25%">
-                                            	<div class="rating-box">
-                                            	    <ul class="c-rating not-hover">
-                                            	        <li class="c-rating__item is-active" data-index="0"></li>
-                                            	        <li class="c-rating__item" data-index="1"></li>
-                                            	        <li class="c-rating__item" data-index="2"></li>
-                                            	        <li class="c-rating__item" data-index="3"></li>
-                                            	        <li class="c-rating__item" data-index="4"></li>
-                                            	    </ul>
-                                            	</div>
-                                            </td>
-                                            <td width="25%"><label class="warning label">Pending Reply</label></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td width="25%"><a href="#">Gustavo Elizalde Ibañez</a></td>
-                                            <td width="25%">23.590.883-2</td>
-                                            <td width="25%">
-                                            	<div class="rating-box">
-                                            	    <ul class="c-rating not-hover">
-                                            	        <li class="c-rating__item is-active" data-index="0"></li>
-                                            	        <li class="c-rating__item is-active" data-index="1"></li>
-                                            	        <li class="c-rating__item is-active" data-index="2"></li>
-                                            	        <li class="c-rating__item" data-index="3"></li>
-                                            	        <li class="c-rating__item" data-index="4"></li>
-                                            	    </ul>
-                                            	</div>
-                                            </td>
-                                            <td width="25%"><label class="warning label">Pending Reply</label></td>
-                                        </tr>
-                                        
+                                        <% end %>
                                     </table>
                                     
                                 </div>

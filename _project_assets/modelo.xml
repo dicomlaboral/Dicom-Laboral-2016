@@ -41,44 +41,53 @@
 		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
 		<type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
 	</group>
-</datatypes><table x="89" y="30" name="company">
+</datatypes><table x="89" y="28" name="company">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(64)</datatype>
 <default>'NULL'</default></row>
-<row name="dni" null="1" autoincrement="0">
+<row name="rut" null="1" autoincrement="0">
 <datatype>VARCHAR(16)</datatype>
 <default>NULL</default></row>
+<row name="phone" null="1" autoincrement="0">
+<datatype>VARCHAR(16)</datatype>
+<default>NULL</default></row>
+<row name="address" null="1" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>NULL</default></row>
+<row name="activity" null="1" autoincrement="0">
+<datatype>VARCHAR(128)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="756" y="27" name="person">
+<table x="717" y="162" name="user">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
-<row name="name" null="0" autoincrement="0">
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR(32)</datatype>
+<default>NULL</default></row>
+<row name="firstname" null="0" autoincrement="0">
 <datatype>VARCHAR(32)</datatype>
 <default>'NULL'</default></row>
 <row name="lastname" null="0" autoincrement="0">
 <datatype>VARCHAR(32)</datatype>
 <default>'NULL'</default></row>
-<row name="maidenname" null="1" autoincrement="0">
-<datatype>VARCHAR(32)</datatype>
-<default>NULL</default></row>
 <row name="phone" null="1" autoincrement="0">
 <datatype>VARCHAR(16)</datatype>
-<default>NULL</default></row>
-<row name="birthday" null="1" autoincrement="0">
-<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="dni" null="0" autoincrement="0">
 <datatype>VARCHAR(16)</datatype>
 <default>'NULL'</default></row>
-<row name="email" null="1" autoincrement="0">
-<datatype>VARCHAR(32)</datatype>
+<row name="birthday" null="1" autoincrement="0">
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -86,14 +95,29 @@
 </table>
 <table x="91" y="225" name="usercompany">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
 <row name="company_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="company" row="id" />
 </row>
-<row name="name" null="1" autoincrement="0">
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>NULL</default></row>
+<row name="firstname" null="1" autoincrement="0">
 <datatype>VARCHAR(32)</datatype>
+<default>NULL</default></row>
+<row name="lastname" null="1" autoincrement="0">
+<datatype>VARCHAR(32)</datatype>
+<default>NULL</default></row>
+<row name="phone" null="1" autoincrement="0">
+<datatype>VARCHAR(16)</datatype>
+<default>NULL</default></row>
+<row name="dni" null="1" autoincrement="0">
+<datatype>VARCHAR(16)</datatype>
+<default>NULL</default></row>
+<row name="birthday" null="1" autoincrement="0">
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="username" null="0" autoincrement="0">
 <datatype>VARCHAR(32)</datatype>
@@ -105,51 +129,62 @@
 <part>id</part>
 </key>
 </table>
-<table x="450" y="11" name="work">
-<row name="company_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
-</row>
-<row name="person_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="person" row="id" />
-</row>
-<key type="PRIMARY" name="">
-</key>
-</table>
-<table x="410" y="112" name="commentscompany">
-<row name="company_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
-</row>
-<row name="person_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="person" row="id" />
-</row>
-<row name="comment" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-</key>
-</table>
-<table x="422" y="238" name="commentsperson">
-<row name="company_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
-</row>
-<row name="person_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="person" row="id" />
-</row>
-<row name="comment" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-</key>
-</table>
-<table x="951" y="236" name="template">
+<table x="442" y="121" name="work">
 <row name="id" null="1" autoincrement="1">
+<datatype>SERIAL</datatype>
+<default>NULL</default></row>
+<row name="from" null="0" autoincrement="0">
+<datatype>VARCHAR(16)</datatype>
+</row>
+<row name="company_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default><relation table="company" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="user" row="id" />
+</row>
+<row name="start_date" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="end_date" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="comment_user" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<row name="comment_company" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="693" y="24" name="commentscompany">
+<row name="work_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="work" row="id" />
+</row>
+<row name="comment" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+</key>
+</table>
+<table x="404" y="29" name="commentsperson">
+<row name="work_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="work" row="id" />
+</row>
+<row name="comment" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+</key>
+</table>
+<table x="932" y="225" name="template">
+<row name="id" null="1" autoincrement="1">
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
 <row name="type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -161,13 +196,16 @@
 <row name="description" null="1" autoincrement="0">
 <datatype>VARCHAR(500)</datatype>
 <default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="784" y="342" name="item">
+<table x="687" y="417" name="category">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
 <row name="template_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -183,21 +221,17 @@
 <part>id</part>
 </key>
 </table>
-<table x="421" y="361" name="ratingscompany">
+<table x="387" y="344" name="ratingscompany">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
-<row name="company_id" null="1" autoincrement="0">
+<row name="work_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
+<default>NULL</default><relation table="work" row="id" />
 </row>
-<row name="person_id" null="1" autoincrement="0">
+<row name="category_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="person" row="id" />
-</row>
-<row name="item_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="item" row="id" />
+<default>NULL</default><relation table="category" row="id" />
 </row>
 <row name="value" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -206,21 +240,17 @@
 <part>id</part>
 </key>
 </table>
-<table x="426" y="524" name="ratingsperson">
+<table x="338" y="491" name="ratingsperson">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
-<row name="company_id" null="1" autoincrement="0">
+<row name="work_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
+<default>NULL</default><relation table="work" row="id" />
 </row>
-<row name="person_id" null="1" autoincrement="0">
+<row name="category_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="person" row="id" />
-</row>
-<row name="item_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="item" row="id" />
+<default>NULL</default><relation table="category" row="id" />
 </row>
 <row name="value" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -231,7 +261,7 @@
 </table>
 <table x="1027" y="101" name="type">
 <row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>SERIAL</datatype>
 <default>NULL</default></row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(32)</datatype>

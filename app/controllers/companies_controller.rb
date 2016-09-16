@@ -14,22 +14,24 @@ class CompaniesController < ApplicationController
   end
 
   def workerrating
-    @work = Work.find(params[:id])
-    @worker = User.find(@work.user_id)
+    # @work = Work.find(params[:id])
+    # @worker = User.find(@work.user_id)
+    @worker = User.find(params[:id])
     @type = Type.where("name = 'PERSONA'").first
     @template = Template.where("type_id = #{@type.id}").first
     @categories = Category.where("template_id = #{@template.id}").order("\"order\" ASC")
   end
 
   def addworkerrating
-    @work = Work.find(params[:id])
-    # @worker = User.find(params[:id])
+    # @work = Work.find(params[:id])
+    @worker = User.find(params[:id])
+    @work = @worker.works.where("company_id = #{current_usercompany.company_id}").first
     @type = Type.where("name = 'PERSONA'").first
     @template = Template.where("type_id = #{@type.id}").first
     @categories = Category.where("template_id = #{@template.id}").order("\"order\" ASC")
     @categories.each do |category|
       @ratinguser = Ratinguser.new
-      @ratinguser.work_id = params[:id]
+      @ratinguser.work_id = @work.id
       @ratinguser.category_id = category.id
       @ratinguser.value = params["category_#{category.id}"]
       @ratinguser.save
@@ -38,7 +40,9 @@ class CompaniesController < ApplicationController
   end
 
   def workers
-
+    # @works = User.joins(:works).select("users.*, works.*").where("works.company_id = #{current_usercompany.company_id} and \"from\" = 'EMPRESA'")
+    @works = User.joins(works: :ratingusers).select("users.firstname, users.lastname, users.dni, avg(ratingusers.value) as promedio").where("works.company_id = #{current_usercompany.company_id}").group("users.firstname, users.lastname, users.dni")
+    # @works = Work.join("users").where("company_id = #{current_usercompany.company_id} and \"from\" = 'EMPRESA'")
   end
 
   # def workers_new
