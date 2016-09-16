@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   #   resources :users, :works
   # end
 
+  resources :companies do
+    resources :works, only: [:index]
+  end
+
   # resources :type, only: [] do
   #   resources :templates, only: [] do
   #       resources :categories, only: [:index]
