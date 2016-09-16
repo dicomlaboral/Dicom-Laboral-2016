@@ -41,7 +41,8 @@ class CompaniesController < ApplicationController
 
   def workers
     # @works = User.joins(:works).select("users.*, works.*").where("works.company_id = #{current_usercompany.company_id} and \"from\" = 'EMPRESA'")
-    @works = User.joins(works: :ratingusers).select("users.firstname, users.lastname, users.dni, avg(ratingusers.value) as promedio").where("works.company_id = #{current_usercompany.company_id}").group("users.firstname, users.lastname, users.dni")
+    # @works = User.joins(works: :ratingusers).select("users.firstname, users.lastname, users.dni, works.start_date, works.end_date, works.comment_company, avg(ratingusers.value) as promedio").where("works.company_id = #{current_usercompany.company_id}").group("users.firstname, users.lastname, users.dni, works.start_date, works.end_date, works.comment_company")
+    @works = User.joins("LEFT JOIN works ON works.user_id = users.id LEFT JOIN ratingusers ON ratingusers.work_id = works.id").select("users.firstname, users.lastname, users.dni, works.start_date, works.end_date, works.comment_company, avg(ratingusers.value) as promedio").where("works.company_id = #{current_usercompany.company_id}").group("users.firstname, users.lastname, users.dni, works.start_date, works.end_date, works.comment_company")
     # @works = Work.join("users").where("company_id = #{current_usercompany.company_id} and \"from\" = 'EMPRESA'")
     #@users = User.joins(:works).where("company_id = #{current_usercompany.company_id}")
     # @works = Work.where("company_id = #{current_usercompany.company_id}")

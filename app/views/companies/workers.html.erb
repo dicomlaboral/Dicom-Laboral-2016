@@ -56,21 +56,24 @@
                                             	        <li class="c-rating__item is-active" data-index="1"></li>
                                             	        <li class="c-rating__item is-active" data-index="2"></li>
                                             	        <li class="c-rating__item is-active" data-index="3"></li>
-                                            	        <li class="c-rating__item" data-index="4"><%= work.promedio.round %></li>
+                                            	        <li class="c-rating__item" data-index="4"><%= (work.promedio.blank?) ? '' : work.promedio.round %></li>
                                             	    </ul>
                                             	</div>
                                             </td>
                                             <td width="25%">
                                                 
-                                                    <% if worker.end_date.blank? %>
+                                                    <% if work.end_date.blank? %>
                                                         <label class="success label">Open</label>
-                                                    <% elsif worker.end_date > Date.current() %>
+                                                    <% elsif work.end_date > Date.current() %>
                                                         <label class="alert label">Closed</label>
-                                                    <% elsif worker.comment_company.blank? %>
+                                                    <% elsif work.comment_company.blank? %>
                                                         <label class="warning label">Pending Comments</label>
+                                                    <% else %>
+                                                        <label class="warning label">--</label>
                                                     <% end %>
                                             </td>
                                         </tr>
+                                        <% end %>
                                     </table>
                                     
                                 </div>
