@@ -38,7 +38,9 @@ class CompaniesController < ApplicationController
   end
 
   def workers
+    #@users = User.joins(:works).where("company_id = #{current_usercompany.company_id}")
 
+    @works = Work.where("company_id = #{current_usercompany.company_id}")
   end
 
   # def workers_new
