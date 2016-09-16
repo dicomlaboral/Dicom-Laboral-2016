@@ -43,6 +43,8 @@ class CompaniesController < ApplicationController
     # @works = User.joins(:works).select("users.*, works.*").where("works.company_id = #{current_usercompany.company_id} and \"from\" = 'EMPRESA'")
     @works = User.joins(works: :ratingusers).select("users.firstname, users.lastname, users.dni, avg(ratingusers.value) as promedio").where("works.company_id = #{current_usercompany.company_id}").group("users.firstname, users.lastname, users.dni")
     # @works = Work.join("users").where("company_id = #{current_usercompany.company_id} and \"from\" = 'EMPRESA'")
+    #@users = User.joins(:works).where("company_id = #{current_usercompany.company_id}")
+    # @works = Work.where("company_id = #{current_usercompany.company_id}")
   end
 
   # def workers_new
