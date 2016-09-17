@@ -9,6 +9,12 @@ class WorksController < ApplicationController
     #@works = Work.all
   end
 
+  def index2
+    @user = User.find(params[:user_id])
+    @works = @user.works
+    #@works = Work.all
+  end
+
   # GET /works/1
   # GET /works/1.json
   def show

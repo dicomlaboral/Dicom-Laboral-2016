@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :works
+  #resources :works
 
   get 'companies/' => 'companies#index'
   get 'companies/workers/:id' => 'companies#worker'
@@ -22,6 +22,13 @@ Rails.application.routes.draw do
   resources :companies do
     resources :works, only: [:index]
   end
+
+  resources :users do
+    resources :works, only: [:index], path_names: { index: 'index2' }
+    #map.resources :works, :path_names => { :index => 'index2' }
+  end
+
+
 
   # resources :type, only: [] do
   #   resources :templates, only: [] do
