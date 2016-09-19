@@ -4,7 +4,15 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    @company = Company.find(params[:company_id])
+    @works = @company.works
+    #@works = Work.all
+  end
+
+  def index2
+    @user = User.find(params[:user_id])
+    @works = @user.works
+    #@works = Work.all
   end
 
   # GET /works/1

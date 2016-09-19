@@ -44,6 +44,7 @@ gem 'railroady', group: :development
 
 # Use Foundation 6 Framework
 gem 'foundation-rails'
+gem 'tzinfo-data'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

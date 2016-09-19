@@ -3,13 +3,16 @@
 
 <ul class="side-nav">
     <li class="active"><a href="<%= companies_path %>"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
-    <li><a href="<%= companies_workers_path %>"><i class="flaticon-profile4"></i>Workers</a></li>
+    <li><a href="<%= company_works_path(current_usercompany.company_id) %>"><i class="flaticon-profile4"></i>Workers</a></li>
     <li><a href="#"><i class="flaticon-businessman22"></i>Staff</a></li>
 </ul>
 
 <% end %>
 
 <% if user_signed_in? %>
-
-
+<ul class="side-nav">
+	<li class="active"><a href="<%= users_path %>"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
+    <li><a href="<%= user_works_path(current_user.id) %>"><i class="flaticon-profile4"></i>Workers</a></li>
+    <li><a href="#"><i class="flaticon-businessman22"></i>Staff</a></li>
+</ul>
 <% end %>
