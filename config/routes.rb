@@ -9,10 +9,6 @@ Rails.application.routes.draw do
   get 'companies/workers_new/:id' => 'companies#addworker', as: :workers_new
   get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
 
-  get 'users/' => 'users#index'
-  get 'users/workers_new/:id' => 'users#addworker', as: :workers_new2
-  get 'users/workers/:id' => 'users#worker'
-  get 'users/workers'
   post  'companies/search'
 
   # resources :companies, :usercompanies do
@@ -23,11 +19,22 @@ Rails.application.routes.draw do
     resources :works, only: [:index]
   end
 
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+  
   resources :users do
     resources :works, only: [:index] #, path_names: { index: 'index2' }
     #map.resources :works, :path_names => { :index => 'index2' }
   end
 
+  get 'users/' => 'users#index'
+  get 'users/workers_new/:id' => 'users#addworker', as: :workers_new2
+  get 'users/workers/:id' => 'users#worker'
+  get 'users/workers'
+  post  'users/search'
 
 
   # resources :type, only: [] do
@@ -38,13 +45,7 @@ Rails.application.routes.draw do
 
   root  'home#index'
   post  'home/create_user_companies'
-  post  'users/search'
 
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
-  }
 
   devise_for :usercompanies, controllers: {
     sessions: 'usercompanies/sessions',
