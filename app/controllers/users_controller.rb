@@ -23,4 +23,30 @@ class UsersController < ApplicationController
     @worker = Company.find(params[:id])
     @works = @worker.works
   end
+
+  def workerrating
+    # @work = Work.find(params[:id])
+    # @worker = User.find(@work.user_id)
+    @worker = Company.find(params[:id])
+    @type = Type.where("name = 'EMPRESA'").first
+    @template = Template.where("type_id = #{@type.id}").first
+    @categories = Category.where("template_id = #{@template.id}").order("\"order\" ASC")
+  end
+
+  def addworkerrating
+    # @work = Work.find(params[:id])
+    @worker = Company.find(params[:id])
+    @work = @worker.works.where("user_id = #{current_user.id}").first
+    @type = Type.where("name = 'EMPRESA'").first
+    @template = Template.where("type_id = #{@type.id}").first
+    @categories = Category.where("template_id = #{@template.id}").order("\"order\" ASC")
+    @categories.each do |category|
+      @ratingcompany = Ratingcompany.new
+      @ratingcompany.work_id = @work.id
+      @ratingcompany.category_id = category.id
+      @ratingcompany.value = params["category_#{category.id}"]
+      @ratingcompany.save
+    end
+    redirect_to users_path
+  end
 end

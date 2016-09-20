@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'users/' => 'users#index'
   get 'users/workers_new/:id' => 'users#addworker', as: :workers_new2
   get 'users/workers/:id' => 'users#worker'
+  get 'users/workers/:id/rating' => 'users#workerrating'
+  post 'users/workers/:id/addrating' => 'users#addworkerrating'
   get 'users/workers'
   post  'users/search'
 

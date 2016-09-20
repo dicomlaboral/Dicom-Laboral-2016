@@ -36,9 +36,10 @@
                                         <div class="large-12 columns text-left">
                                             <div class="row">
 	                                            <div class="small-12 medium-3 columns"><strong>Full Name</strong></div>
-	                                            <div class="small-12 medium-3 columns"><strong>R.U.T</strong></div>
+	                                            <div class="small-12 medium-2 columns"><strong>R.U.T</strong></div>
 	                                            <div class="small-12 medium-3 columns"><strong>Rating</strong></div>
-	                                            <div class="small-12 medium-3 columns"><strong>Status</strong></div>
+                                                <div class="small-12 medium-2 columns"><strong>Status</strong></div>
+	                                            <div class="small-12 medium-2 columns"><strong>Calificar</strong></div>
 		                                    </div>
                                         </div>
                                     </div>
@@ -47,9 +48,9 @@
                                     <table class="width-100 custom-table responsive text-left workers-list">
                                         <% @works.each do |work| %>
                                         <tr>
-                                            <td width="25%"><a href="#"><%= "#{work.user.firstname} #{work.user.lastname}" %></a></td>
-                                            <td width="25%"><%= work.user.dni %></td>
-                                            <td width="25%">
+                                            <td width="20%"><a href="/companies/workers/<%= work.user.id %>"><%= "#{work.user.firstname} #{work.user.lastname}" %></a></td>
+                                            <td width="20%"><%= work.user.dni %></td>
+                                            <td width="20%">
                                             	<div class="rating-box">
                                             	    <ul class="c-rating not-hover">
                                             	        <li class="c-rating__item is-active" data-index="0"></li>
@@ -60,7 +61,7 @@
                                             	    </ul>
                                             	</div>
                                             </td>
-                                            <td width="25%">
+                                            <td width="20%">
                                                 
                                                     <% if work.end_date.blank? %>
                                                         <label class="success label">Open</label>
@@ -71,6 +72,11 @@
                                                     <% else %>
                                                         <label class="warning label">--</label>
                                                     <% end %>
+                                            </td>
+                                            <td width="20%">
+                                                <% if work.ratingusers.average(:value).blank? %>
+                                                    <a href="/companies/workers/<%= work.user.id %>/rating">Calificar</a>
+                                                <% end %>
                                             </td>
                                         </tr>
                                         <% end %>

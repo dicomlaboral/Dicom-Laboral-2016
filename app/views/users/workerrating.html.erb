@@ -1,0 +1,16 @@
+
+<%= render "partials/dashboard_header" %>
+
+
+<h3>Califica a <%= "#{@worker.name}" %></h3>
+<%= form_tag "/users/workers/#{@worker.id}/addrating", multipart: true do %>
+    <% @categories.each do |category| %>
+        <h5><%= category.name %></h5>
+        <% 5.times do |x| %>
+            <%= radio_button_tag "category_#{category.id}", x+1 %>
+            <%= label_tag "category_#{category.id}", x+1 %>
+        <% end %>
+    <% end %>
+    <br>
+    <%= submit_tag "Calificar", class: "button", data: { confirm: "Esta seguro de enviar los datos?", disable_with: "Espere por favor..." } %>
+<% end %>
