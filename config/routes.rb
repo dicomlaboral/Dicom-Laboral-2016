@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #resources :works
+  resources :works
 
   get 'companies/' => 'companies#index'
   get 'companies/workers/:id' => 'companies#worker'
