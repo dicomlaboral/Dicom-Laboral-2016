@@ -4,8 +4,21 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @company = Company.find(params[:company_id])
-    @works = @company.works
+    if params[:company_id].present?
+      @company = Company.find(params[:company_id])
+      @works = @company.works
+      # render 'show_with_edit'
+    elsif params[:user_id].present?
+      @user = User.find(params[:user_id])
+      @works = @user.works
+      render 'indexuser'
+    end
+
+    # if signed_in?
+    #   render 'show_with_edit'
+    # else
+    #   render 'show_without_edit'
+    # end
     #@works = Work.all
   end
 

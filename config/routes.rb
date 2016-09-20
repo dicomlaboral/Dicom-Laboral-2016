@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :works, only: [:index], path_names: { index: 'index2' }
+    resources :works, only: [:index] #, path_names: { index: 'index2' }
     #map.resources :works, :path_names => { :index => 'index2' }
   end
 
