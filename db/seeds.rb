@@ -9,9 +9,11 @@
 
 # Global Destroy Info
 AdminUser.destroy_all
+Ratinguser.destroy_all
+Ratingcompany.destroy_all
 Work.destroy_all
-Company.destroy_all
 Usercompany.destroy_all
+Company.destroy_all
 User.destroy_all
 Category.destroy_all
 Template.destroy_all

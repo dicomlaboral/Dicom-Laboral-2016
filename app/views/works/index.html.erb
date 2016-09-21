@@ -53,11 +53,16 @@
                                             <td width="20%">
                                             	<div class="rating-box">
                                             	    <ul class="c-rating not-hover">
-                                            	        <li class="c-rating__item is-active" data-index="0"></li>
-                                            	        <li class="c-rating__item is-active" data-index="1"></li>
-                                            	        <li class="c-rating__item is-active" data-index="2"></li>
-                                            	        <li class="c-rating__item is-active" data-index="3"></li>
-                                            	        <li class="c-rating__item" data-index="4"><%= (work.ratingusers.average(:value).blank?) ? '' : work.ratingusers.average(:value).round %></li>
+                                            	        <%
+                                                            @li = ''
+                                                            if work.ratingusers.average(:value).blank?
+                                                                @li = "<li class=\"c-rating__item\"></li>" * 5
+                                                            else
+                                                                @li = "<li class=\"c-rating__item is-active\"></li>" * work.ratingusers.average(:value).round
+                                                                @li = @li + "<li class=\"c-rating__item\"></li>" * (5-work.ratingusers.average(:value).round)
+                                                            end
+                                                        %>
+                                                        <%== @li %>
                                             	    </ul>
                                             	</div>
                                             </td>
