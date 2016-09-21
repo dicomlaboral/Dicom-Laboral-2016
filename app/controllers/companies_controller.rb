@@ -16,15 +16,18 @@ class CompaniesController < ApplicationController
       @rating = work.ratingcompanies.average(:value)
       if not(@rating.blank?)
         @sum = @sum + @rating
+        @cant = @cant + 1
       end
-      @cant = @cant + 1
     end
     if @cant > 0
       @prom = (@sum/@cant).round
+    else
+      @prom = '--'
     end
   end
 
   def worker
+    @company = Company.find(current_usercompany.company_id)
     @worker = User.find(params[:id])
     @works = @worker.works
   end
@@ -32,6 +35,7 @@ class CompaniesController < ApplicationController
   def workerrating
     # @work = Work.find(params[:id])
     # @worker = User.find(@work.user_id)
+    @company = Company.find(current_usercompany.company_id)
     @worker = User.find(params[:id])
     @type = Type.where("name = 'PERSONA'").first
     @template = Template.where("type_id = #{@type.id}").first

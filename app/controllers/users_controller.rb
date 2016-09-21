@@ -53,5 +53,22 @@ class UsersController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @workers = @user.works.count
+
+    @works = @user.works.where("\"from\" = 'EMPRESA'")
+    @sum = 0
+    @cant = 0
+    @prom = 0
+    @works.each do |work|
+      @rating = work.ratingusers.average(:value)
+      if not(@rating.blank?)
+        @sum = @sum + @rating
+        @cant = @cant + 1
+      end
+    end
+    if @cant > 0
+      @prom = (@sum/@cant).round
+    else
+      @prom = '--'
+    end
   end
 end
