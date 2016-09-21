@@ -46,6 +46,8 @@ gem 'railroady', group: :development
 gem 'foundation-rails'
 gem 'tzinfo-data'
 gem 'rails_12factor'
+gem 'groupdate'
+gem 'chartkick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

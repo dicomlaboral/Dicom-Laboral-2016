@@ -10,6 +10,15 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+
+    columns do
+      column do
+        panel "Usuarios registrados" do
+          render "graph"
+        end
+      end
+    end
+
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do

@@ -1,0 +1,11 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+
+<%= 
+
+# 1º Traigo Products haciendo un Join con Category
+# 2º Los agrupo por Nombre de Cat
+# 3º Pluck retorna un string (nombre_cat, count_prod):
+#        CatName, 2
+#
+line_chart User.group_by_day(:created_at).count 
+%>
