@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     # @user = User.where("dni = ?", params[:rut])
     # @user = User.find_by("dni = ?", params[:rut])
