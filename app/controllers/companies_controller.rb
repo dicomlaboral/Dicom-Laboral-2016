@@ -6,6 +6,8 @@ class CompaniesController < ApplicationController
 
   def index
     @page_section = "dashboard"
+    @company = Company.find(current_usercompany.company_id)
+    @workers = @company.works.count
   end
 
   def worker

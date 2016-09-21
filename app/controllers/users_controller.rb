@@ -49,4 +49,9 @@ class UsersController < ApplicationController
     end
     redirect_to users_path
   end
+
+  def index
+    @user = User.find(current_user.id)
+    @workers = @user.works.count
+  end
 end
