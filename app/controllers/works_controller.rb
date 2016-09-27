@@ -76,6 +76,7 @@ class WorksController < ApplicationController
     #     format.json { render json: @work.errors, status: :unprocessable_entity }
     #   end
     # end
+    UserNotifSendGrid.send_signup_email('ocmchile@gmail.com').deliver
   end
 
   # PATCH/PUT /works/1
