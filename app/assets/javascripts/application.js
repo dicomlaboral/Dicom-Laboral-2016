@@ -9,7 +9,15 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+
+//= stub js_front_end/foundation
+//= stub js_front_end/scrollReveal
+//= stub js_front_end/jquery.gmap
+//= stub js_front_end/main
+//= stub js_front_end/vendor/jquery.min
+//= stub front_end
+//= stub front_end_footer
 //= require jquery
 //= require jquery_ujs
 //= require foundation
