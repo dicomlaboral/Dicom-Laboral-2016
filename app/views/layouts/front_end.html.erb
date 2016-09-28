@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DICOM Laboral permite a las empresas obtener información histórica actualizada sobre los candidatos a contratar, reduciendo el riesgo de contrataciones insatisfactorias.">
+
+    <title>DICOM Laboral | La manera inteligente de contratar</title>
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	
+	<%= stylesheet_link_tag    "front_end" %>
+    <%= javascript_include_tag "front_end", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body data-loader="3">
+    
+    <div class="success callout hide">
+      <%= notice %>
+    </div>
+    <div class="alert callout hide">
+      <%= alert %>
+    </div>
+
+    <!-- Document Wrapper -->
+    <div id="wrapper" class="clearfix">
+
+		<%= yield %>
+
+    </div><!-- END #wrapper -->
+
+    <!-- Scroll To Top -->
+    <div id="scrollToTop" class="fa fa-chevron-up"></div>
+
+    <!-- Footer Scripts -->
+    <%= javascript_include_tag "front_end_footer", 'data-turbolinks-track' => true %>
+
+  </body>
+</html>

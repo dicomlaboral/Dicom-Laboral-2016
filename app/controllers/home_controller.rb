@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include Devise::Controllers::Helpers
+  layout "front_end"
   
   def index
     
