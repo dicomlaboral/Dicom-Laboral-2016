@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @workers = @user.works.count
 
-    @works = @user.works.where("\"from\" = 'EMPRESA'")
+    @works = @user.works #.where("\"from\" = 'EMPRESA'")
     @sum = 0
     @cant = 0
     @prom = 0

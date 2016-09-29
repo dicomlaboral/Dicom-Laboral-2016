@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
     @page_section = "dashboard"
     @company = Company.find(current_usercompany.company_id)
     @workers = @company.works.count
-    @works = @company.works.where("\"from\" = 'PERSONA'")
+    @works = @company.works #.where("\"from\" = 'PERSONA'")
     @sum = 0
     @cant = 0
     @prom = 0
