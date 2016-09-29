@@ -73,4 +73,18 @@ class UsersController < ApplicationController
       @prom = '--'
     end
   end
+
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    @user = User.find(current_user.id)
+    @user.firstname = params[:firstname]
+    @user.lastname = params[:lastname]
+    @user.phone = params[:phone]
+    @user.birthday = params[:birthday]
+    @user.save
+    redirect_to edit_user_path(current_user.id)
+  end
 end

@@ -13,6 +13,7 @@
 <ul class="side-nav">
 	<li class="active"><a href="<%= users_path %>"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
     <li><a href="<%= user_works_path(current_user.id) %>"><i class="flaticon-profile4"></i>Workers</a></li>
+    <li><a href="<%= edit_user_path(current_user.id) %>"><i class="flaticon-profile4"></i>My Profile</a></li>
     <!-- <li><a href="#"><i class="flaticon-businessman22"></i>Staff</a></li> -->
 </ul>
 <% end %>
