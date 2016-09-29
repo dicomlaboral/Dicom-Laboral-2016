@@ -55,6 +55,12 @@ Rails.application.routes.draw do
     passwords: "usercompanies/passwords"
   }
 
+  resources :usercompanies, only: [:edit, :update]
+
+  #get 'usercompanies/edit'
+
+  #get 'usercompanies/update'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
