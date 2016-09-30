@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>Confirm relationship</h2>
+	<form action="<%= "/home/confirmfromuser/1/2" %>" method="post">
+	    <input type="hidden" name="idu" value="<%= @idu %>">
+	    <input type="hidden" name="idc" value="<%= @idc %>">
+	    <%= hidden_field_tag :authenticity_token,form_authenticity_token %>
+	    <div class="small-12 columns">
+	        <label for="user">Company: <%= @company.name %>
+	        </label>
+	    </div>
+
+	    <div class="small-12 columns">
+	        <label for="comments1">Company Comments:
+	        <textarea name="comments1" id="comments1" cols="30" rows="4" disabled="true"></textarea></label>
+	    </div>
+
+	    <div class="small-12 columns">
+	        <label for="company">Worker: <%= "#{@user.firstname} #{@user.lastname}" %></label>
+	    </div>
+
+	    <div class="small-12 columns">
+	        <label for="comments2">User Comments:
+	        <textarea name="comments2" id="comments2" cols="30" rows="6"></textarea></label>
+	    </div>
+
+	    <div class="small-12 columns">
+	        <button class="button" type="submit">Confirmar relación laboral</button>
+	    </div>
+	</form>
+</body>
+</html>

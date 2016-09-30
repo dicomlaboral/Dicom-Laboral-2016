@@ -43,4 +43,17 @@ class HomeController < ApplicationController
 
   end
 
+  def workfromcompany
+    @idc = params[:idc]
+    @idu = params[:idu]
+    @company = Company.find(@idc)
+    @user = User.find(@idu)
+  end
+
+  def workfromuser
+    @idu = params[:idu]
+    @idc = params[:idc]
+    @user = User.find(@idu)
+    @company = Company.find(@idc)
+  end
 end

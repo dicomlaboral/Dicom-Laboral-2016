@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   root  'home#index'
   post  'home/create_user_companies'
+  get   'home/confirmfromuser/:idu/:idc' => 'home#workfromuser'
+  get   'home/confirmfromcompany/:idc/:idu' => 'home#workfromcompany'
 
 
   devise_for :usercompanies, controllers: {
