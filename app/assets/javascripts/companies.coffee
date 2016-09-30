@@ -4,6 +4,7 @@ class WorkerHistory
     @init()
 
   init: ()->
+    $(document).foundation()
     @workerModalHandler()
 
   workerModalHandler: ()->
@@ -11,6 +12,7 @@ class WorkerHistory
       e.preventDefault()
       e.stopPropagation()
       work_id = $(e.target).data('trigger-modal')
+      console.log work_id
       
       # Make Ajax Request to get Job Info
       $.ajax(
@@ -45,5 +47,5 @@ class WorkerHistory
       $('#detailWorkRelationship').foundation('open')
       return
 
-$(document).ready ->
+$(document).on 'turbolinks:load', (e)->
   window.theme = new WorkerHistory()
