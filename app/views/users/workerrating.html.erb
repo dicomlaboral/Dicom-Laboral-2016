@@ -2,15 +2,50 @@
 <%= render "partials/dashboard_header" %>
 
 
-<h3>Califica a <%= "#{@worker.name}" %></h3>
-<%= form_tag "/users/workers/#{@worker.id}/addrating", multipart: true do %>
-    <% @categories.each do |category| %>
-        <h5><%= category.name %></h5>
-        <% 5.times do |x| %>
-            <%= radio_button_tag "category_#{category.id}", x+1 %>
-            <%= label_tag "category_#{category.id}", x+1 %>
-        <% end %>
-    <% end %>
-    <br>
-    <%= submit_tag "Calificar", class: "button", data: { confirm: "Esta seguro de enviar los datos?", disable_with: "Espere por favor..." } %>
-<% end %>
+<div class="row expanded wrapper collapse">
+    <div class="large-12 columns content-bg">
+
+        <div class="row collapse">
+            <div class="no-padding">
+                <div class="large-2 medium-12 small-12 columns">
+                    <%= render "partials/dashboard_nav_bar" %>
+                </div>
+            </div>
+            <div class="large-10 medium-12 small-12 columns light-grey-bg-pattern">
+
+                
+                <div class="row">
+                    <div class="large-10 columns">
+                        <div class="page-name">
+                            <h3 class="left">Califica a <%= "#{@worker.name}" %></h3>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                	<div class="small-12 columns">
+                		
+
+                		<%= form_tag "/users/workers/#{@worker.id}/addrating", multipart: true do %>
+                		    <% @categories.each do |category| %>
+                		        <h5><%= category.name %></h5>
+                		        <% 5.times do |x| %>
+                		            <%= radio_button_tag "category_#{category.id}", x+1 %>
+                		            <%= label_tag "category_#{category.id}", x+1 %>
+                		        <% end %>
+                		    <% end %>
+                		    <br>
+                		    <%= submit_tag "Calificar", class: "button", data: { confirm: "Esta seguro de enviar los datos?", disable_with: "Espere por favor..." } %>
+                		<% end %>
+
+                	</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
