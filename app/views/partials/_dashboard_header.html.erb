@@ -5,14 +5,16 @@
             <div class="logo-bg">
                 <% if usercompany_signed_in? %>
                     <img src="<%= current_usercompany.company.logo %>" alt=""/>
+                <% else %>
+                    <img src="<%= asset_path('frio-logo.png') %>" alt="DICOMlaboral"/>
                 <% end %>
-                <i class="fi-list toggles" data-toggle="hide"></i>
+                <!--<i class="fi-list toggles" data-toggle="hide"></i>-->
             </div>
         </div>
         <div class="large-10 medium-8 small-12 columns top-menu">
             <div class="row">
                 
-                <div class="large-10 medium-6 small-12 columns text-center float-right">
+                <div class="medium-6 small-12 columns text-center float-right">
 
                     <% if usercompany_signed_in? %>
                     <div class="row">
