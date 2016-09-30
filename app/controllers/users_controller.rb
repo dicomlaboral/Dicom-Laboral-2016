@@ -69,8 +69,6 @@ class UsersController < ApplicationController
     end
     if @cant > 0
       @prom = (@sum/@cant).round
-    else
-      @prom = '--'
     end
   end
 

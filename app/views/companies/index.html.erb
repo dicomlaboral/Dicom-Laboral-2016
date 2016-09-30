@@ -28,7 +28,22 @@
                             <div class="stats border">
                                 <div class="left">
                                     Company Rating
-                                    <h3><%= @prom %></h3>
+                                    <h3>
+                                    <div class="rating-box">
+                                        <ul class="c-rating not-hover" style="justify-content: center; padding-top: 20px; padding-bottom: 15px">
+                                            <%
+                                                @li = ''
+                                                if @prom == 0
+                                                    @li = "<li class=\"c-rating__item\"></li>" * 5
+                                                else
+                                                    @li = "<li class=\"c-rating__item is-active\"></li>" * @prom
+                                                    @li = @li + "<li class=\"c-rating__item\"></li>" * (5-@prom)
+                                                end
+                                            %>
+                                            <%== @li %>
+                                        </ul>
+                                    </div>
+                                    </h3>
                                 </div>
                                 <i class="fi-price-tag right sales"></i>
                                 <div class="clearfix"></div>
