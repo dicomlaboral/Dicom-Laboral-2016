@@ -12,6 +12,7 @@ var WEPRO = WEPRO || {};
 	WEPRO.initialize = {
 
 		init: function(){
+			WEPRO.initialize.jqueryMasked();
 			WEPRO.initialize.responsiveClasses();
 			WEPRO.initialize.scrollToTop();
 			WEPRO.initialize.showTopScroll();
@@ -21,6 +22,12 @@ var WEPRO = WEPRO || {};
 			WEPRO.initialize.dataResponsiveHeights();
 			WEPRO.initialize.pageTransition();
 			WEPRO.initialize.resizeVideos()
+		},
+
+		jqueryMasked: function(){
+			$("#user_dni").mask("99999999-9");
+			$("#rut").mask("99999999-9");
+			$("#dni").mask("99999999-9");
 		},
 
 		responsiveClasses: function(){

@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require maskedinput
 //= require js_front_end/vendor/what-input.min
 //= require js_front_end/foundation.min
 //= require js_front_end/classie
