@@ -19,12 +19,16 @@
 
   <body data-loader="3">
     
-    <div class="success callout hide">
+    <% if notice.present? %>
+    <div class="success callout">
       <%= notice %>
     </div>
-    <div class="alert callout hide">
+    <% end %>
+    <% if alert.present? %>
+    <div class="alert callout">
       <%= alert %>
     </div>
+    <% end %>
 
     <!-- Document Wrapper -->
     <div id="wrapper" class="clearfix">
