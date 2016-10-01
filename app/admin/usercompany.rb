@@ -4,7 +4,7 @@ ActiveAdmin.register Usercompany do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-	permit_params :firstname, :lastname, :created_at, :company, :phone, :dni, :birthday, :confirmed_at, :photo
+	permit_params :firstname, :lastname, :created_at, :company, :phone, :dni, :birthday, :confirmed_at, :photo, :email
 #
 # or
 #
