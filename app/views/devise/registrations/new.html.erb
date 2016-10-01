@@ -11,8 +11,23 @@
       <div class="row">
 
         <div class="small-12 columns">
+          <%= f.label :firstname %><br />
+          <%= f.text_field :firstname, autofocus: true %>
+        </div>
+
+        <div class="small-12 columns">
+          <%= f.label :lastname %><br />
+          <%= f.text_field :lastname %>
+        </div>
+
+        <div class="small-12 columns">
+          <%= f.label :dni %><br />
+          <%= f.text_field :dni %>
+        </div>
+
+        <div class="small-12 columns">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true %>
+          <%= f.email_field :email %>
         </div>
 
         <div class="small-12 columns">
