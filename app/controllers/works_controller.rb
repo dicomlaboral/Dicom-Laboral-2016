@@ -57,7 +57,7 @@ class WorksController < ApplicationController
       #envio email al usuario seleccionado
       @user = User.find(params[:id])
       @company = Company.find(current_usercompany.company_id)
-      UserNotifSendGrid.send_work_from_company_email(@user, @company).deliver
+      UserNotifSendGrid.send_work_from_company_email(@user, @company, @work).deliver
       redirect_to companies_path
     else
       @work = Work.new #(work_params2)
@@ -73,7 +73,7 @@ class WorksController < ApplicationController
       @user = User.find(current_user.id)
       @company = Company.find(params[:id])
       @usercompanies.each do |usercompany|
-        UserNotifSendGrid.send_work_from_user_email(usercompany, @user, @company).deliver
+        UserNotifSendGrid.send_work_from_user_email(usercompany, @user, @company, @work).deliver
       end
       redirect_to users_path
     end

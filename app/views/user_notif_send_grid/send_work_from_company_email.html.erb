@@ -4,7 +4,7 @@
             <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     </head>
     <body>
-            <h2>Estimado <%= "#{@user.firstname} #{@user.lastname}" %>, la empresa <%= "#{@company.name}" %> ha indicado que trabajo con usted.</h3>
-            <h3>Favor <a href="">confirmar la relación laboral</a></h3>
+            <h2>Estimado(a) <%= "#{@user.firstname} #{@user.lastname}" %>, la empresa <%= "#{@company.name}" %> ha indicado que trabajo con usted.</h3>
+            <h3>Favor <a href="<%= "#{root_url}home/confirmfromcompany/#{@work.id}" %>">confirmar la relación laboral</a></h3>
     </body>
 </html>

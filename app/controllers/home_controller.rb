@@ -32,7 +32,7 @@ class HomeController < ApplicationController
 
     @company = Company.new(name: @company_name, rut: @company_rut, phone: @company_phone, address: @company_address, activity: @company_activity, description: @company_description, logo: @company_logo)
 
-    @usercompany = Usercompany.new(firstname: @usercompany_firstname, lastname: @usercompany_lastname, photo: @usercompany_photo, company: @company, email: @usercompany_email , password: "123456" )
+    @usercompany = Usercompany.new(firstname: @usercompany_firstname, lastname: @usercompany_lastname, photo: @usercompany_photo, company: @company, email: @usercompany_email , password: "123456", dni: @usercompany_dni )
 
     if @company.save and @usercompany.save
       redirect_to root_path
@@ -44,16 +44,16 @@ class HomeController < ApplicationController
   end
 
   def workfromcompany
-    @idc = params[:idc]
-    @idu = params[:idu]
-    @company = Company.find(@idc)
-    @user = User.find(@idu)
+    @idw = params[:idw]
+    @work = Work.find(@idw)
+    @company = Company.find(@work.company_id)
+    @user = User.find(@work.user_id)
   end
 
   def workfromuser
-    @idu = params[:idu]
-    @idc = params[:idc]
-    @user = User.find(@idu)
-    @company = Company.find(@idc)
+    @idw = params[:idw]
+    @work = Work.find(@idw)
+    @user = User.find(@work.user_id)
+    @company = Company.find(@work.company_id)
   end
 end

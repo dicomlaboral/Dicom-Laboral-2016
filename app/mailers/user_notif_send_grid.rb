@@ -8,18 +8,20 @@ class UserNotifSendGrid < ApplicationMailer
       :subject => 'Thanks for signing up for our amazing app')
   end
 
-  def send_work_from_user_email(usercompany, user, company)
+  def send_work_from_user_email(usercompany, user, company, work)
     @usercompany = usercompany
     @user = user
     @company = company
+    @work = work
     #mail(:to => @user.email,
     mail(:to => @usercompany.email,
       :subject => 'Nueva relación laboral desde usuario')
   end
 
-  def send_work_from_company_email(user, company)
+  def send_work_from_company_email(user, company, work)
     @user = user
     @company = company
+    @work = work
     #mail(:to => @user.email,
     mail(:to => @user.email,
       :subject => 'Nueva relación laboral desde empresa')

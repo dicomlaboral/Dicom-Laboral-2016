@@ -11,23 +11,24 @@
 	    <input type="hidden" name="idc" value="<%= @idc %>">
 	    <%= hidden_field_tag :authenticity_token,form_authenticity_token %>
 	    <div class="small-12 columns">
+	        <label for="company">Company: <%= @company.name %></label>
+	    </div>
+
+	    <div class="small-12 columns">
+	        <label for="comments2">Company Comments:
+	        <textarea name="comments2" id="comments2" cols="30" rows="4" disabled="true"><%= @work.comment_company %></textarea></label>
+	    </div>
+
+	    <div class="small-12 columns">
 	        <label for="user">Worker: <%= "#{@user.firstname} #{@user.lastname}" %>
 	        </label>
 	    </div>
 
 	    <div class="small-12 columns">
 	        <label for="comments1">User Comments:
-	        <textarea name="comments1" id="comments1" cols="30" rows="4" disabled="true"></textarea></label>
+	        <textarea name="comments1" id="comments1" cols="30" rows="6"></textarea></label>
 	    </div>
 
-	    <div class="small-12 columns">
-	        <label for="company">Company: <%= @company.name %></label>
-	    </div>
-
-	    <div class="small-12 columns">
-	        <label for="comments2">Company Comments:
-	        <textarea name="comments2" id="comments2" cols="30" rows="6"></textarea></label>
-	    </div>
 
 	    <div class="small-12 columns">
 	        <button class="button" type="submit">Confirmar relación laboral</button>
