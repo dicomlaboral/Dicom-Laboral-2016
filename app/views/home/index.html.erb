@@ -18,7 +18,7 @@
 						<li><a href="#" data-href="#about-section"><div>Acerca</div></a></li>
 						<li><a href="#" data-href="#services-section"><div>Beneficios</div></a></li>
 						<li><a href="#" data-href="#registro-section"><div>Registro</div></a></li>
-						<li><a href="#" data-href="#team"><div>Top 3</div></a></li>
+						<li><a href="#" data-href="#team"><div>Mejores Empleados</div></a></li>
 						<li><a href="#" data-href="#contact-section"><div>Contacto</div></a></li>
 					</ul>
 					
@@ -199,13 +199,14 @@
 			<h2 class="title text-uppercase">Empleados Top del mes</h2>
 		</div>
 		
+		<% @top_3_workers.each do |worker| %>
 		<!-- Este es el html a repetir -->
-		<div class="large-4 columns">
+		<div class="large-3 columns">
 			<div class="team-member-block" data-sr="wait 0.2s, enter left">
 				<!-- image -->
 				<div class="team-member-image">
 					<a href="#">
-						<img src="<%= asset_path('team/team-member1.jpg') %>" alt="team">
+						<img src="<%= asset_path(worker[:photo]) %>" alt="team">
 					</a>
 					<div class="team-member-overlay">
 						<!-- Add content here if you want -->
@@ -213,70 +214,17 @@
 				</div>
 				<!-- caption -->
 				<div class="team-member-caption">
-					<h3><a href="#">John Doe</a></h3>
-					<span>CEO, Founder</span>
+					<h3><a href="#"><%= worker[:name] %></a></h3>
+					<span><%= worker[:email] %></span>
 
 					<div class="team-member-social-links float-right">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Este es el html a repetir -->
-
-		<div class="large-4 columns">
-			<div class="team-member-block" data-sr="wait 0.4s, enter left">
-				<!-- image -->
-				<div class="team-member-image">
-					<a href="#">
-						<img src="<%= asset_path('team/team-member2.jpg') %>" alt="team">
-					</a>
-					<div class="team-member-overlay">
-						<!-- Add content here if you want -->
-					</div>
-				</div>
-				<!-- caption -->
-				<div class="team-member-caption">
-					<h3><a href="#">Jane Doe</a></h3>
-					<span>VP for Marketing</span>
-
-					<div class="team-member-social-links float-right">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="large-4 columns">
-			<div class="team-member-block" data-sr="wait 0.6s, enter left">
-				<!-- image -->
-				<div class="team-member-image">
-					<a href="#">
-						<img src="<%= asset_path('team/team-member3.jpg') %>" alt="team">
-					</a>
-					<div class="team-member-overlay">
-						<!-- Add content here if you want -->
-					</div>
-				</div>
-				<!-- caption -->
-				<div class="team-member-caption">
-					<h3><a href="#">Sam Smitch</a></h3>
-					<span>SVP, Finance</span>
-
-					<div class="team-member-social-links float-right">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		<% end %>
 
 	</div>
 

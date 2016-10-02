@@ -3,7 +3,39 @@ class HomeController < ApplicationController
   layout "front_end"
   
   def index
-    
+    @all_workers = []
+    @the_worker = {}
+    @top_3_workers = []
+
+    @user = User.all
+    @user.each do |user|
+      @workers = user.works.count
+      @works = user.works #.where("\"from\" = 'EMPRESA'")
+      @sum = 0
+      @cant = 0
+      @prom = 0
+      @works.each do |work|
+        @rating = work.ratingusers.average(:value)
+        if not(@rating.blank?)
+          @sum = @sum + @rating
+          @cant = @cant + 1
+        end
+      end
+      if @cant > 0
+        @prom = (@sum/@cant).round
+      end
+
+      full_name = "#{user.firstname} " " #{user.lastname}"
+
+      # Creamos un HASH con la info del usuario
+      @the_worker = {name: full_name, email: user.email, photo: user.photo.url, prom: @prom}
+
+      # Pusheamos el HASH al ARRAY
+      @all_workers.push(@the_worker)
+    end
+
+    # Seleccionamos solo los 5 Workers con mejor promedio
+    @top_3_workers = @all_workers.group_by{ |r| r[:prom] }.sort_by{ |k, v| -k }.take(2).map(&:last).flatten
   end
 
   def user
