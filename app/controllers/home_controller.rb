@@ -88,4 +88,20 @@ class HomeController < ApplicationController
     @user = User.find(@work.user_id)
     @company = Company.find(@work.company_id)
   end
+
+  def workconfirmuser
+    @work = Work.find(params[:idw])
+    @work.comment_user = params[:comments]
+    @work.save
+    flash[:notice] = "Usted ha confirmado exitosamente la relación laboral"
+    redirect_to root_path
+  end
+
+  def workconfirmcompany
+    @work = Work.find(params[:idw])
+    @work.comment_company = params[:comments]
+    @work.save
+    flash[:notice] = "Usted ha confirmado exitosamente la relación laboral"
+    redirect_to root_path
+  end
 end

@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   get   'home/confirmfromuser/:idw' => 'home#workfromuser'
   # get   'home/confirmfromcompany/:idc/:idu' => 'home#workfromcompany'
   get   'home/confirmfromcompany/:idw' => 'home#workfromcompany'
+  post   'home/workconfirmcompany/:idw' => 'home#workconfirmcompany'
+  post   'home/workconfirmuser/:idw' => 'home#workconfirmuser'
 
 
   devise_for :usercompanies, controllers: {
