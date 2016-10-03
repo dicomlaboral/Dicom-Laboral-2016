@@ -4,7 +4,7 @@ ActiveAdmin.register User do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 
-	permit_params :firstname, :lastname, :rut, :phone, :dni, :birthday, :confirmed_at
+	permit_params :firstname, :lastname, :rut, :phone, :dni, :birthday, :confirmed_at, :photo
 
 #
 # or
