@@ -27,6 +27,9 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'carrierwave'
+gem 'sendgrid-rails', '~> 2.0'
+
+gem 'maskedinput-rails'
 
 # gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin', '~> 1.0.0.pre4'

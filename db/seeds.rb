@@ -33,7 +33,7 @@ end
 
 # Companies Seed Creation
 
-5.times do |i|
+10.times do |i|
 	rut = rand.to_s[2..9]
 	rut += "-#{i}"
 	c = Company.create!(name: Faker::Company.name,rut: rut ,phone: "800-600-9000" ,address: Faker::Address.street_address ,activity: Faker::Company.buzzword, description: Faker::Company.catch_phrase)
@@ -43,14 +43,14 @@ end
 end
 
 t1 = Type.create!(name: 'PERSONA')
-tt1 = Template.create!(name: 'EVALUACION PERSONA 01', description: 'Este modelo tendra 5 categorias de evaluacion...', active: false, type: t1)
+tt1 = Template.create!(name: 'EVALUACION PERSONA 01', description: 'Este modelo tendra 5 categorias de evaluacion...', active: true, type: t1)
 Category.create!(template: tt1, name: 'Presentación Personal', order: 1)
 Category.create!(template: tt1, name: 'Puntualidad', order: 2)
 Category.create!(template: tt1, name: 'Profesionalismo', order: 3)
 Category.create!(template: tt1, name: 'Compromiso', order: 4)
 Category.create!(template: tt1, name: 'Sociabilidad', order: 5)
 t2 = Type.create!(name: 'EMPRESA')
-tt2 = Template.create!(name: 'EVALUACION EMPRESA 01', description: 'Este modelo tendra 7 categorias de evaluacion...', active: false, type: t2)
+tt2 = Template.create!(name: 'EVALUACION EMPRESA 01', description: 'Este modelo tendra 7 categorias de evaluacion...', active: true, type: t2)
 Category.create!(template: tt2, name: 'Remuneración', order: 1)
 Category.create!(template: tt2, name: 'Espacio de Trabajo', order: 2)
 Category.create!(template: tt2, name: 'Bonos', order: 3)
@@ -58,9 +58,25 @@ Category.create!(template: tt2, name: 'Casino', order: 4)
 Category.create!(template: tt2, name: 'Beneficios', order: 5)
 
 types = ['PERSONA', 'EMPRESA']
-10.times do
+20.times do
 	# retorno registro aleatorio
 	u2 = User.limit(1).order("RANDOM()").first
 	c2 = Company.limit(1).order("RANDOM()").first
 	w = Work.create!(from: types.sample, company: c2, user: u2, start_date: Faker::Date.between(10.year.ago, 1.year.ago), end_date: Faker::Date.between(1.year.ago, Date.today), comment_user: Faker::Lorem.sentence(6), comment_company: Faker::Lorem.sentence(6) )
+end
+
+@categories = Category.where("template_id = #{tt1.id}")
+10.times do
+	w = Work.where("\"from\" = 'PERSONA'").limit(1).order("RANDOM()").first
+	@categories.each do |category|
+		Ratinguser.create!(work: w, category: category, value: rand(1..5))
+	end
+end
+
+@categories = Category.where("template_id = #{tt2.id}")
+10.times do
+	w = Work.where("\"from\" = 'EMPRESA'").limit(1).order("RANDOM()").first
+	@categories.each do |category|
+		Ratingcompany.create!(work: w, category: category, value: rand(1..5))
+	end
 end

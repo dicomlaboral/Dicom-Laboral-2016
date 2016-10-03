@@ -11,6 +11,10 @@
  * file per style scope.
  *
  *= stub active_admin
+ *= stub front_end
+ *= stub css_front_end/foundation-flex
+ *= stub css_front_end/foundation.min
+ *= stub css_front_end/style
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides

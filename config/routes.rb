@@ -47,6 +47,12 @@ Rails.application.routes.draw do
 
   root  'home#index'
   post  'home/create_user_companies'
+  # get   'home/confirmfromuser/:idu/:idc' => 'home#workfromuser'
+  get   'home/confirmfromuser/:idw' => 'home#workfromuser'
+  # get   'home/confirmfromcompany/:idc/:idu' => 'home#workfromcompany'
+  get   'home/confirmfromcompany/:idw' => 'home#workfromcompany'
+  post   'home/workconfirmcompany/:idw' => 'home#workconfirmcompany'
+  post   'home/workconfirmuser/:idw' => 'home#workconfirmuser'
 
 
   devise_for :usercompanies, controllers: {
@@ -54,6 +60,12 @@ Rails.application.routes.draw do
     registrations: 'usercompanies/registrations',
     passwords: "usercompanies/passwords"
   }
+
+  resources :usercompanies, only: [:edit, :update]
+
+  #get 'usercompanies/edit'
+
+  #get 'usercompanies/update'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

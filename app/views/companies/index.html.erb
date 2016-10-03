@@ -28,7 +28,22 @@
                             <div class="stats border">
                                 <div class="left">
                                     Company Rating
-                                    <h3><%= @prom %></h3>
+                                    <h3>
+                                    <div class="rating-box">
+                                        <ul class="c-rating not-hover" style="justify-content: center; padding-top: 20px; padding-bottom: 15px">
+                                            <%
+                                                @li = ''
+                                                if @prom == 0
+                                                    @li = "<li class=\"c-rating__item\"></li>" * 5
+                                                else
+                                                    @li = "<li class=\"c-rating__item is-active\"></li>" * @prom
+                                                    @li = @li + "<li class=\"c-rating__item\"></li>" * (5-@prom)
+                                                end
+                                            %>
+                                            <%== @li %>
+                                        </ul>
+                                    </div>
+                                    </h3>
                                 </div>
                                 <i class="fi-price-tag right sales"></i>
                                 <div class="clearfix"></div>
@@ -75,7 +90,7 @@
                         <div class="large-8 columns">
                             <div class="custom-panel">
                                 <div class="custom-panel-heading">
-                                    <h4>Search new Worker</h4>
+                                    <h4>Buscar Nuevo Empleado</h4>
                                 </div>
                                 <div class="custom-panel-body">
                                     
@@ -85,7 +100,7 @@
                                                 <span class="input-group-label" style="height: 39px; border: 1px solid #cacaca;"><i class="fi-page-search"></i></span>
                                             </div>
                                             <div class="small-12 medium-10 columns">
-                                                <input type="text" name="rut" placeholder="RUT: 23.590.883-2">
+                                                <input type="text" name="rut" id="search_rut" placeholder="RUT: 23590883-2">
                                             </div>
                                             <div class="small-12 medium-1 columns">
                                                 <button class="button expanded" type="submit">Go!</button>

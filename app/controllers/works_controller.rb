@@ -54,6 +54,10 @@ class WorksController < ApplicationController
       @work.end_date = params[:enddate]
       @work.company_id = current_usercompany.company_id
       @work.save
+      #envio email al usuario seleccionado
+      @user = User.find(params[:id])
+      @company = Company.find(current_usercompany.company_id)
+      UserNotifSendGrid.send_work_from_company_email(@user, @company, @work).deliver
       redirect_to companies_path
     else
       @work = Work.new #(work_params2)
@@ -64,6 +68,13 @@ class WorksController < ApplicationController
       @work.end_date = params[:enddate]
       @work.company_id = params[:id]
       @work.save
+      #envio email a todos los usercompanies de la empresa seleccionada
+      @usercompanies = Usercompany.where("company_id = #{params[:id]}")
+      @user = User.find(current_user.id)
+      @company = Company.find(params[:id])
+      @usercompanies.each do |usercompany|
+        UserNotifSendGrid.send_work_from_user_email(usercompany, @user, @company, @work).deliver
+      end
       redirect_to users_path
     end
     # @from = 'EMPRESA'
