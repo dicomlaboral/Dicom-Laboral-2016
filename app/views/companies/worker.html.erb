@@ -171,7 +171,19 @@
     <br>
 
     <div class="row">
-        <div class="small-12 medium-4 columns">
+        <% @c = 0 %>
+        <% @categories.each do |category| %>
+            <% @c = @c + 1 %>
+            <div class="small-12 medium-4 columns">
+                <div class="rating-box">
+                    <span><%= category.name %>:</span>
+                    <ul class="c-rating not-hover" id="ul<%= @c %>">
+                        
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+        <!-- <div class="small-12 medium-4 columns">
             <div class="rating-box">
                 <span>Puntualidad:</span>
                 <ul class="c-rating not-hover">
@@ -242,7 +254,7 @@
                     <li class="c-rating__item is-active" data-index="4"></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 
   <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
