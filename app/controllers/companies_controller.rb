@@ -28,6 +28,9 @@ class CompaniesController < ApplicationController
     @company = Company.find(current_usercompany.company_id)
     @worker = User.find(params[:id])
     @works = @worker.works
+    @type = Type.where("name = 'PERSONA'").first
+    @template = Template.where("type_id = #{@type.id}").first
+    @categories = Category.where("template_id = #{@template.id}").order("\"order\" ASC")
   end
 
   def workerrating
@@ -79,7 +82,13 @@ class CompaniesController < ApplicationController
 
   def work_data
     @work = Work.find(params[:id])
-    render json: @work.as_json(include: :company)
+    # render json: @work.as_json(:include => [:company])
+    @ratinguser = @work.ratingusers
+    # render json: @ratinguser.as_json
+       render :json => {
+          :work => @work.as_json(:include => [:company]),
+          :ratinguser => @ratinguser
+       }
   end
 
   def search
