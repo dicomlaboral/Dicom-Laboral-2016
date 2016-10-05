@@ -25,7 +25,7 @@
                     </div>
                     <div class="large-10 columns">
                         <div class="page-name">
-                            <h3 class="left"><%= @worker.firstname %> <%= @worker.lastname %> | Worker Profile</h3>
+                            <h3 class="left"><%= @worker.firstname %> <%= @worker.lastname %> | Perfil del Empleado</h3>
                             <div class="clearfix"></div>
                             <ul class="worker-resume">
                                 <li><strong>Nombre y Apellido:</strong> <%= @worker.firstname %> <%= @worker.lastname %></li>
@@ -47,76 +47,36 @@
                             <% @works.each do |work| %>
                             
                             <div class="cd-timeline-block">
-                                <div class="cd-timeline-img good">
-                                    <i class="fi-check"></i>
-                                </div> <!-- cd-timeline-img -->
+
+                                <% if work.ratingusers.average(:value) <= 2 %>
+                                    <div class="cd-timeline-img bad">
+                                        <i class="fi-alert"></i>
+                                    </div>
+                                <% elsif work.ratingusers.average(:value) == 3 %>
+                                    <div class="cd-timeline-img regular">
+                                        <i class="fi-minus"></i>
+                                    </div> 
+                                <% elsif work.ratingusers.average(:value) >= 4 %>
+                                    <div class="cd-timeline-img good">
+                                        <i class="fi-check"></i>
+                                    </div>
+                                <% end %>
 
                                 <div class="cd-timeline-content">
-                                    <h2><%= work.company.name %></h2>
+                                    <h3><%= work.company.name %></h3>
                                     <p><%= work.company.description %></p>
-                                    <a class="cd-read-more" data-trigger-modal="<%= work.id %>">Ver detalle</a>
+                                    <a class="button" data-trigger-modal="<%= work.id %>">Ver detalle</a>
 
                                     <span class="cd-date">
-                                        <strong>From:</strong> <%= work.start_date %> - <strong>To:</strong> <%= work.end_date %>
+                                        <strong>Desde:</strong> <%= work.start_date %><br>
+                                        <strong>Hasta:</strong> <%= work.end_date %>
                                         <br>
-                                        <strong>Total Time:</strong> <%= distance_of_time_in_words(work.start_date, work.end_date) %>
+                                        <strong>Duración Total:</strong> <%= distance_of_time_in_words(work.start_date, work.end_date) %>
                                     </span>
                                 </div> <!-- cd-timeline-content -->
                             </div>
 
                             <% end %>
-
-
-                            <div class="cd-timeline-block hide">
-                                <div class="cd-timeline-img bad">
-                                    <i class="fi-alert"></i>
-                                </div> <!-- cd-timeline-img -->
-
-                                <div class="cd-timeline-content">
-                                    <h2>Company Name</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
-                                    <a href="#0" class="cd-read-more">Ver detalle</a>
-                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
-                                </div> <!-- cd-timeline-content -->
-                            </div>
-
-                            <div class="cd-timeline-block hide">
-                                <div class="cd-timeline-img regular">
-                                    <i class="fi-minus"></i>
-                                </div> <!-- cd-timeline-img -->
-
-                                <div class="cd-timeline-content">
-                                    <h2>Company Name</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                                    <a href="#0" class="cd-read-more">Ver detalle</a>
-                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
-                                </div> <!-- cd-timeline-content -->
-                            </div>
-
-                            <div class="cd-timeline-block hide">
-                                <div class="cd-timeline-img regular">
-                                    <i class="fi-minus"></i>
-                                </div> <!-- cd-timeline-img -->
-
-                                <div class="cd-timeline-content">
-                                    <h2>Company Name</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
-                                    <a href="#0" class="cd-read-more">Ver detalle</a>
-                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
-                                </div> <!-- cd-timeline-content -->
-                            </div>
-
-                            <div class="cd-timeline-block hide">
-                                <div class="cd-timeline-img bad">
-                                    <i class="fi-alert"></i>
-                                </div> <!-- cd-timeline-img -->
-
-                                <div class="cd-timeline-content">
-                                    <h2>Final Section</h2>
-                                    <p>This is the content of the last section</p>
-                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
-                                </div> <!-- cd-timeline-content -->
-                            </div>
 
                         </section> <!-- cd-timeline -->
 
@@ -134,7 +94,7 @@
 
 <div class="reveal" id="detailWorkRelationship" data-reveal>
 
-    <h4 class="text-center">Work Relationship Detail</h4>
+    <h4 class="text-center">Detalle de la Relación Laboral</h4>
 
     <table>
         <tbody>
@@ -154,20 +114,20 @@
     </table>
 
     <!-- Comentario EMPRESA -->
-    <div class="callout warning">
-      <h6>Company Comments:</h6>
+    <div class="callout primary">
+      <h6>Comentarios de la Empresa:</h6>
       <p id="modal-company-comments"></p>
     </div>
     <!-- //Comentario EMPRESA -->
 
     <!-- Comentario EMPLEADO -->
-    <div class="callout success">
-      <h6>Worker Comments:</h6>
+    <div class="callout primary">
+      <h6>Respuesta del Empleado:</h6>
       <p id="modal-worker-comments"></p>
     </div>
     <!-- //Comentario EMPLEADO -->
 
-    <h4 class="text-center">Worker Evaluations</h4>
+    <h4 class="text-center">Evaluación del Empleado</h4>
     <br>
 
     <div class="row">
