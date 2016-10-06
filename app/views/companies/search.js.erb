@@ -1,0 +1,31 @@
+<% if @user.present? %>
+	$("#name").html("<%= @user.firstname ||= '' %>");
+	<% if @user.birthday? %>
+		$("#birthday").html("<%= l @user.birthday %>");
+	<% else %>
+		$("#birthday").html("<%= '' %>");
+	<% end %>
+	$("#email").html("<%= @user.email ||= '' %>");
+	$("#phone").html("<%= @user.phone ||= '' %>");
+
+	<% if @user.photo? %>
+		$("#worker_avatar").css("backgroundImage", "url('<%= @user.photo %>')");
+	<% end %>
+
+	$("#msjresult").html("");
+	$("#usermarco").css("display", "");
+	<% if @work.present? %>
+		$("#detail_link").css("display", "");
+		$("#create_work_link").css("display", "none");
+		$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
+	<% else %>
+		//alert('sin relacion laboral')
+		$("#detail_link").css("display", "inline-block");
+		$("#detail_link").attr('href', '<%= companies_workers_path %>/<%=@user.id %>');
+		$("#create_work_link").css("display", "inline-block");
+		$("#create_work_link").attr('href', '<%= workers_new_path(@user.id) %>');
+	<% end %>
+<% else %>
+	$("#usermarco").css("display", "none");
+	$("#msjresult").html("No results found");
+<% end %>

@@ -1,0 +1,128 @@
+
+<%= render "partials/dashboard_header" %>
+
+
+<div class="row expanded wrapper collapse">
+    <div class="large-12 columns content-bg">
+
+        <div class="row collapse">
+            <div class="no-padding">
+                <div class="large-2 medium-12 small-12 columns">
+                    <%= render "partials/dashboard_nav_bar" %>
+                </div>
+            </div>
+            <div class="large-10 medium-12 small-12 columns light-grey-bg-pattern">
+                <div class="row">
+                    <div class="large-10 columns">
+                        <div class="page-name">
+                            <h3 class="left">Dashboard</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dashboard">
+
+                    <!-- INSIGHT INFORMATION ABOUT COMPANY -->
+                    <div class="row">
+                        <div class="large-3 medium-6 small-12 columns">
+                            <div class="stats border">
+                                <div class="left">
+                                    Company Rating
+                                    <h3>****</h3>
+                                </div>
+                                <i class="fi-price-tag right sales"></i>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="large-3 medium-6 small-12 columns">
+                            <div class="stats border">
+                                <div class="left">
+                                    Comments
+                                    <h3>40</h3>
+                                </div>
+                                <i class="fi-comment right orders"></i>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="large-3 medium-6 small-12 columns">
+                            <div class="stats border">
+                                <div class="left">
+                                    Total Searchs
+                                    <h3>240</h3>
+                                </div>
+                                <i class="fi-page-search right profit"></i>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="large-3 medium-6 small-12 columns">
+                            <div class="stats border">
+                                <div class="left">
+                                    Current Workers
+                                    <h3>10</h3>
+                                </div>
+                                <i class="fi-torso right user"></i>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- INSIGHT INFORMATION ABOUT COMPANY -->
+
+                    <br />
+                    
+                    <!-- SEARCH WORKER -->
+                    <div class="row">
+
+                        <div class="large-8 columns">
+                            <div class="custom-panel">
+                                <div class="custom-panel-heading">
+                                    <h4>Search new Worker</h4>
+                                </div>
+                                <div class="custom-panel-body">
+                                    
+                                    <form action="<%= users_search_path %>" data-remote="true" method="post">
+                                        <div class="input-group">
+                                            <span class="input-group-label"><i class="fi-page-search"></i></span>
+                                            <input class="input-group-field" type="text" name="rut" placeholder="RUT: 23.590.883-2">
+                                            <!-- <a class="input-group-button button">Go!</a> -->
+                                            <button class="input-group-button button" type="submit">Go!</button>
+                                        </div>
+                                    </form>
+
+                                    <h4 class="text-center" id="msjresult"></h4>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="large-4 columns" style="display: none;" id="usermarco">
+                            <div class="custom-panel">
+                                <div class="custom-panel-heading">
+                                    <h4>Worker Result</h4>
+                                </div>
+                                <div class="custom-panel-body">
+                                    
+                                    <div class="worker-avatar" style="background-image: url(<%= asset_path 'worker-avatar.jpg' %>)"></div>
+
+                                    <ul class="worker-resume">
+                                        <li><strong>Nombre y Apellido:</strong> <span id="name">Megan Fox</span></li>
+                                        <li><strong>Fecha de Nacimiento:</strong> <span id="birthday">10/12/1984</span></li>
+                                        <li><strong>Email:</strong> <span id="email">chupaelperro@gmail.com</span></li>
+                                        <li><strong>Teléfono:</strong> <span id="phone">600 800 9000</span></li>
+                                    </ul>
+
+                                    <a href="#" class="button success text-center">Ver Historial</a>
+                                 
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- //SEARCH WORKER -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

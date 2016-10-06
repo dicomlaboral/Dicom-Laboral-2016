@@ -1,0 +1,261 @@
+
+<%= render "partials/dashboard_header" %>
+
+
+<div class="row expanded wrapper collapse">
+    <div class="large-12 columns content-bg">
+
+        <div class="row collapse">
+            <div class="no-padding">
+                <div class="large-2 medium-12 small-12 columns">
+                    <%= render "partials/dashboard_nav_bar" %>
+                </div>
+            </div>
+            <div class="large-10 medium-12 small-12 columns light-grey-bg-pattern">
+
+                <div class="row">
+                    <div class="large-2 columns">
+
+                        <% if @worker.photo? %>
+                            <div class="worker-avatar border-white" style="background-image: url(<%= @worker.photo %>)"></div>
+                        <% else %>
+                            <div class="worker-avatar border-white"></div>
+                        <% end %>
+                        
+                    </div>
+                    <div class="large-10 columns">
+                        <div class="page-name">
+                            <h3 class="left"><%= @worker.firstname %> <%= @worker.lastname %> | Worker Profile</h3>
+                            <div class="clearfix"></div>
+                            <ul class="worker-resume">
+                                <li><strong>Nombre y Apellido:</strong> <%= @worker.firstname %> <%= @worker.lastname %></li>
+                                <li><strong>Fecha de Nacimiento:</strong> <%= @worker.birthday %></li>
+                                <li><strong>Email:</strong> <a href="mailto:<%= @worker.email %>"><%= @worker.email %></a></li>
+                                <li><strong>Teléfono:</strong> <%= @worker.phone %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEARCH WORKER -->
+                <div class="row">
+                    <div class="large-12 columns">
+                        
+                        
+                        <section id="cd-timeline" class="cd-container">
+                            
+                            <% @works.each do |work| %>
+                            
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img good">
+                                    <i class="fi-check"></i>
+                                </div> <!-- cd-timeline-img -->
+
+                                <div class="cd-timeline-content">
+                                    <h2><%= work.company.name %></h2>
+                                    <p><%= work.company.description %></p>
+                                    <a class="cd-read-more" data-trigger-modal="<%= work.id %>">Ver detalle</a>
+
+                                    <span class="cd-date">
+                                        <strong>From:</strong> <%= work.start_date %> - <strong>To:</strong> <%= work.end_date %>
+                                        <br>
+                                        <strong>Total Time:</strong> <%= distance_of_time_in_words(work.start_date, work.end_date) %>
+                                    </span>
+                                </div> <!-- cd-timeline-content -->
+                            </div>
+
+                            <% end %>
+
+
+                            <div class="cd-timeline-block hide">
+                                <div class="cd-timeline-img bad">
+                                    <i class="fi-alert"></i>
+                                </div> <!-- cd-timeline-img -->
+
+                                <div class="cd-timeline-content">
+                                    <h2>Company Name</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+                                    <a href="#0" class="cd-read-more">Ver detalle</a>
+                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div>
+
+                            <div class="cd-timeline-block hide">
+                                <div class="cd-timeline-img regular">
+                                    <i class="fi-minus"></i>
+                                </div> <!-- cd-timeline-img -->
+
+                                <div class="cd-timeline-content">
+                                    <h2>Company Name</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                    <a href="#0" class="cd-read-more">Ver detalle</a>
+                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div>
+
+                            <div class="cd-timeline-block hide">
+                                <div class="cd-timeline-img regular">
+                                    <i class="fi-minus"></i>
+                                </div> <!-- cd-timeline-img -->
+
+                                <div class="cd-timeline-content">
+                                    <h2>Company Name</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
+                                    <a href="#0" class="cd-read-more">Ver detalle</a>
+                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div>
+
+                            <div class="cd-timeline-block hide">
+                                <div class="cd-timeline-img bad">
+                                    <i class="fi-alert"></i>
+                                </div> <!-- cd-timeline-img -->
+
+                                <div class="cd-timeline-content">
+                                    <h2>Final Section</h2>
+                                    <p>This is the content of the last section</p>
+                                    <span class="cd-date"><strong>From:</strong> Jan 14 - <strong>To:</strong> Jan 15</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div>
+
+                        </section> <!-- cd-timeline -->
+
+
+                    </div>
+                </div>
+                <!-- //SEARCH WORKER -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="reveal" id="detailWorkRelationship" data-reveal>
+
+    <h4 class="text-center">Work Relationship Detail</h4>
+
+    <table>
+        <tbody>
+          <tr>
+            <td width="35%"><strong>Fecha Inicio:</strong></td>
+            <td width="65%" id="modal-start-date"></td>
+          </tr>
+          <tr>
+            <td><strong>Fecha Término:</strong></td>
+            <td id="modal-end-date"></td>
+          </tr>
+          <tr>
+            <td><strong>Empresa:</strong></td>
+            <td id="modal-company-name"></td>
+          </tr>
+        </tbody>
+    </table>
+
+    <!-- Comentario EMPRESA -->
+    <div class="callout warning">
+      <h6>Company Comments:</h6>
+      <p id="modal-company-comments"></p>
+    </div>
+    <!-- //Comentario EMPRESA -->
+
+    <!-- Comentario EMPLEADO -->
+    <div class="callout success">
+      <h6>Worker Comments:</h6>
+      <p id="modal-worker-comments"></p>
+    </div>
+    <!-- //Comentario EMPLEADO -->
+
+    <h4 class="text-center">Worker Evaluations</h4>
+    <br>
+
+    <div class="row">
+        <% @c = 0 %>
+        <% @categories.each do |category| %>
+            <% @c = @c + 1 %>
+            <div class="small-12 medium-4 columns">
+                <div class="rating-box">
+                    <span><%= category.name %>:</span>
+                    <ul class="c-rating not-hover" id="ul<%= @c %>">
+                        
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+        <!-- <div class="small-12 medium-4 columns">
+            <div class="rating-box">
+                <span>Puntualidad:</span>
+                <ul class="c-rating not-hover">
+                    <li class="c-rating__item is-active" data-index="0"></li>
+                    <li class="c-rating__item is-active" data-index="1"></li>
+                    <li class="c-rating__item is-active" data-index="2"></li>
+                    <li class="c-rating__item" data-index="3"></li>
+                    <li class="c-rating__item" data-index="4"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="rating-box">
+                <span>Presencia:</span>
+                <ul class="c-rating not-hover">
+                    <li class="c-rating__item is-active" data-index="0"></li>
+                    <li class="c-rating__item is-active" data-index="1"></li>
+                    <li class="c-rating__item is-active" data-index="2"></li>
+                    <li class="c-rating__item is-active" data-index="3"></li>
+                    <li class="c-rating__item" data-index="4"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="rating-box">
+                <span>Trabajo en equipo:</span>
+                <ul class="c-rating not-hover">
+                    <li class="c-rating__item is-active" data-index="0"></li>
+                    <li class="c-rating__item" data-index="1"></li>
+                    <li class="c-rating__item" data-index="2"></li>
+                    <li class="c-rating__item" data-index="3"></li>
+                    <li class="c-rating__item" data-index="4"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="rating-box">
+                <span>Iniciativa:</span>
+                <ul class="c-rating not-hover">
+                    <li class="c-rating__item is-active" data-index="0"></li>
+                    <li class="c-rating__item is-active" data-index="1"></li>
+                    <li class="c-rating__item is-active" data-index="2"></li>
+                    <li class="c-rating__item is-active" data-index="3"></li>
+                    <li class="c-rating__item is-active" data-index="4"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="rating-box">
+                <span>Metas Cumplidas:</span>
+                <ul class="c-rating not-hover">
+                    <li class="c-rating__item is-active" data-index="0"></li>
+                    <li class="c-rating__item is-active" data-index="1"></li>
+                    <li class="c-rating__item is-active" data-index="2"></li>
+                    <li class="c-rating__item" data-index="3"></li>
+                    <li class="c-rating__item" data-index="4"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="rating-box">
+                <span>Asistencia:</span>
+                <ul class="c-rating not-hover">
+                    <li class="c-rating__item is-active" data-index="0"></li>
+                    <li class="c-rating__item is-active" data-index="1"></li>
+                    <li class="c-rating__item is-active" data-index="2"></li>
+                    <li class="c-rating__item is-active" data-index="3"></li>
+                    <li class="c-rating__item is-active" data-index="4"></li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
+</div>

@@ -1,0 +1,20 @@
+
+<% if usercompany_signed_in? %>
+
+<ul class="side-nav">
+    <li class="active"><a href="<%= companies_path %>"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
+    <li><a href="<%= company_works_path(current_usercompany.company_id) %>"><i class="flaticon-profile4"></i>Mis Empleados</a></li>
+    <li><a href="<%= edit_usercompany_path(current_usercompany.id) %>"><i class="flaticon-invoice1"></i>Mi Perfil</a></li>
+    <!-- <li><a href="#"><i class="flaticon-businessman22"></i>Staff</a></li> -->
+</ul>
+
+<% end %>
+
+<% if user_signed_in? %>
+<ul class="side-nav">
+	<li class="active"><a href="<%= users_path %>"><i class="flaticon-dashboard1"></i>Dashboard</a></li>
+    <li><a href="<%= user_works_path(current_user.id) %>"><i class="flaticon-profile4"></i>Empleos</a></li>
+    <li><a href="<%= edit_user_path(current_user.id) %>"><i class="flaticon-invoice1"></i>Mi perfil</a></li>
+    <!-- <li><a href="#"><i class="flaticon-businessman22"></i>Staff</a></li> -->
+</ul>
+<% end %>

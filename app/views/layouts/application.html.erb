@@ -3,15 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DICOM Laboral permite a las empresas obtener información histórica actualizada sobre los candidatos a contratar, reduciendo el riesgo de contrataciones insatisfactorias.">
+    <meta name="title" content="<%= content_for?(:title) ? yield(:title) : "Untitled" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "DICOM Laboral | Reduzca el riesgo de sus contrataciones de empleados" %></title>
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body class="<%= controller.controller_name %> <%= @page_section %>">
+    
+    <div class="success callout hide">
+      <%= notice %>
+    </div>
+    <div class="alert callout hide">
+      <%= alert %>
+    </div>
+
 
     <%= yield %>
 

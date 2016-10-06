@@ -1,0 +1,22 @@
+<% if @company.present? %>
+	$("#name").html("<%= @company.name ||= '' %>");
+	$("#address").html("<%= @company.address %>");
+	$("#activity").html("<%= @company.activity ||= '' %>");
+	$("#phone").html("<%= @company.phone ||= '' %>");
+
+	$("#msjresult").html("");
+	$("#usermarco").css("display", "");
+	<% if @work.present? %>
+		$("#detail_link").css("display", "");
+		$("#create_work_link").css("display", "none");
+		$("#detail_link").attr('href', '<%= users_workers_path %>/<%=@company.id %>');
+	<% else %>
+		alert('sin relacion laboral')
+		$("#detail_link").css("display", "none");
+		$("#create_work_link").css("display", "");
+		$("#create_work_link").attr('href', '<%= workers_new2_path(@company.id) %>');
+	<% end %>
+<% else %>
+	$("#usermarco").css("display", "none");
+	$("#msjresult").html("No results found");
+<% end %>

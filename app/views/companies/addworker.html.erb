@@ -1,0 +1,73 @@
+
+<%= render "partials/dashboard_header" %>
+
+
+<div class="row expanded wrapper collapse">
+    <div class="large-12 columns content-bg">
+
+        <div class="row collapse">
+            <div class="no-padding">
+                <div class="large-2 medium-12 small-12 columns">
+                    <%= render "partials/dashboard_nav_bar" %>
+                </div>
+            </div>
+            <div class="large-10 medium-12 small-12 columns light-grey-bg-pattern">
+
+                
+                <div class="row">
+                    <div class="large-10 columns">
+                        <div class="page-name">
+                            <h3 class="left">Create New Worker Relationship</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="small-12 medium-6 columns">
+                        <div class="row">
+
+                            <form action="<%= works_path %>" method="post">
+                                <input type="hidden" name="id" value="<%= @user.id %>">
+                                <input type="hidden" name="from" value="<%= @from %>">
+                                <%= hidden_field_tag :authenticity_token,form_authenticity_token %>
+                                <div class="small-12 columns">
+                                    <label for="user">Worker: <%= "#{@user.firstname} #{@user.lastname}" %>
+                                    </label>
+                                </div>
+
+
+                                <div class="small-12 columns">
+                                    <label for="company">Company: <%= @company.name %></label>
+                                </div>
+
+
+
+                                <div class="small-12 columns">
+                                    <label for="comments">Company Comments:
+                                    <textarea name="comments" id="comments" cols="30" rows="6"></textarea></label>
+                                </div>
+
+
+                                <div class="small-12 columns">
+                                    <label for="startdate">Start Date:
+                                    <input type="date" name="startdate" id="startdate" max="<%= Date.yesterday %>"></label>
+                                </div>
+
+                                <div class="small-12 columns">
+                                    <label for="enddate">End Date:
+                                    <input type="date" name="enddate" id="enddate" max="<%= Date.today %>"></label>
+                                </div>
+
+                                <div class="small-12 columns">
+                                    <button class="button" type="submit">Enviar datos</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

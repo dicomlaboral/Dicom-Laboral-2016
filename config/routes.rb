@@ -1,4 +1,75 @@
 Rails.application.routes.draw do
+  resources :works
+
+  get 'companies/' => 'companies#index'
+  get 'companies/workers/:id' => 'companies#worker'
+  get 'companies/workers/:id/rating' => 'companies#workerrating'
+  post 'companies/workers/:id/addrating' => 'companies#addworkerrating'
+  get 'companies/workers'
+  get 'companies/workers_new/:id' => 'companies#addworker', as: :workers_new
+  get 'companies/work_data/:id' => 'companies#work_data', as: :work_data
+
+  post  'companies/search'
+
+  # resources :companies, :usercompanies do
+  #   resources :users, :works
+  # end
+
+  resources :companies do
+    resources :works, only: [:index]
+  end
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+  
+  resources :users do
+    resources :works, only: [:index] #, path_names: { index: 'index2' }
+    #map.resources :works, :path_names => { :index => 'index2' }
+  end
+
+  get 'users/' => 'users#index'
+  get 'users/workers_new/:id' => 'users#addworker', as: :workers_new2
+  get 'users/workers/:id' => 'users#worker'
+  get 'users/workers/:id/rating' => 'users#workerrating'
+  post 'users/workers/:id/addrating' => 'users#addworkerrating'
+  get 'users/workers'
+  post  'users/search'
+
+
+  # resources :type, only: [] do
+  #   resources :templates, only: [] do
+  #       resources :categories, only: [:index]
+  #   end
+  # end
+
+  root  'home#index'
+  post  'home/create_user_companies'
+  # get   'home/confirmfromuser/:idu/:idc' => 'home#workfromuser'
+  get   'home/confirmfromuser/:idw' => 'home#workfromuser'
+  # get   'home/confirmfromcompany/:idc/:idu' => 'home#workfromcompany'
+  get   'home/confirmfromcompany/:idw' => 'home#workfromcompany'
+  post   'home/workconfirmcompany/:idw' => 'home#workconfirmcompany'
+  post   'home/workconfirmuser/:idw' => 'home#workconfirmuser'
+
+
+  devise_for :usercompanies, controllers: {
+    sessions: 'usercompanies/sessions',
+    registrations: 'usercompanies/registrations',
+    passwords: "usercompanies/passwords"
+  }
+
+  resources :usercompanies, only: [:edit, :update]
+
+  #get 'usercompanies/edit'
+
+  #get 'usercompanies/update'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  star_date: 2016-09-05
+  end_date: 2016-09-05
+  comment_user: MyText
+  comment_company: MyText
+  user_id: 
+  company_id: 
+
+two:
+  star_date: 2016-09-05
+  end_date: 2016-09-05
+  comment_user: MyText
+  comment_company: MyText
+  user_id: 
+  company_id: 

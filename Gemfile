@@ -23,6 +23,19 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'devise'
+gem 'dotenv-rails'
+gem 'faker'
+gem 'carrierwave'
+gem 'sendgrid-rails', '~> 2.0'
+
+gem 'maskedinput-rails'
+
+# gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre4'
+
+gem 'railroady', group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -34,10 +47,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Foundation 6 Framework
 gem 'foundation-rails'
+gem 'tzinfo-data'
+gem 'rails_12factor'
+gem 'groupdate'
+gem 'chartkick'
+gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'uniform_notifier'
+  gem 'bullet'
 end
 
 group :development do
